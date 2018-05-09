@@ -20,11 +20,14 @@ public class ValidateSetup : MonoBehaviour {
 
 	public static string[] names = new string[6];
 	public static bool[] bot = new bool[6];
+    
+    //Put public for bot
+    public static int player;
 
 	public bool validateStart() {
 		//Debug.Log ("validateStart()");
 
-		int player = 0;
+		player = 0;
 
 		// Get the names from fields and save then in an array.
 		for(int i = 0; i < fields.Length; i++) {

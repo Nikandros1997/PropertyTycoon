@@ -104,7 +104,7 @@ public class Player
 		return name;
 	}
 
-	public bool isBot() {
+	public bool IsBot() {
 		return bot;
 	}
 

@@ -14,16 +14,22 @@ public class AssignTokens : MonoBehaviour {
 	public static int numberOfPlayers;
 
 	private int index = 0;
+    
+    //public for bot
+    public static bool isBot;
 
 	private string[] tokens = {"Boot", "Phone", "Goblet", "Spoon", "Cat", "Hatstand"};
 
 	void Start() {
-
+        isBot = false;
 	}
 
 	public void setHeader() {
 		if(index < 6) {
 			header.text = ValidateSetup.names[index] + " Choose Token:";
+            if(ValidateSetup.bot[index]){
+                isBot = true;
+            }
 		}
 	}
 
@@ -43,6 +49,7 @@ public class AssignTokens : MonoBehaviour {
 				tg.SetAllTogglesOff ();
 				t.interactable = false;
 				t.isOn = false;
+                isBot = false;
 				index++;
 				setHeader ();
 			}

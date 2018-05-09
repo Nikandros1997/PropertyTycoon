@@ -18,6 +18,7 @@ public class Game : MonoBehaviour {
 	public static Dice dice = new Dice();
 
 	private int DoublesCounter = 0;
+    public static int TurnCounter = -1;
 
 	public GameObject Buy_Auction;
 
@@ -37,6 +38,7 @@ public class Game : MonoBehaviour {
 
 	public void StartGame() {
 		HasStarted = true;
+        TurnCounter = 0;
 	}
 	
 	// Update is called once per frame
@@ -53,7 +55,7 @@ public class Game : MonoBehaviour {
 	public void RollDice() {
 
 		int roll = dice.Roll ();
-
+        TurnCounter++;
 
 		if (dice.IsDoubles ()) {
 			DoublesCounter++;
