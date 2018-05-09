@@ -8,8 +8,10 @@ public class PropertyClicked : MonoBehaviour, IPointerDownHandler {
 
 	public GameObject Parent;
 	public int click = 0;
+	public int player = 0;
+	public static int PlayerChosen = 0;
 
-	public static string pname = "";
+	public static string propertyName = "";
 	public static int no = 0;
 
 	// Use this for initialization
@@ -24,42 +26,67 @@ public class PropertyClicked : MonoBehaviour, IPointerDownHandler {
 
 
 	public void OnPointerDown (PointerEventData eventData) {
+		PlayerChosen = player;
+
 		if (Input.GetMouseButtonDown (0)) {
 			//Debug.Log (Parent.name + "\t" + click);
-			List<Property> properties = Game.players [Game.currentPlayer].GetProperties ();
+			List<Property> properties;
+			if (player == 0) {
+				properties = Game.players [Game.currentPlayer].GetProperties ();
+			} else {
+				properties = Game.players [TradeManager.PlayerToTrade].GetProperties ();
+			}
 			bool didit = false;
 
 			int index = 0;
-			foreach (Property p in properties) {
+			/*foreach (Property p in properties) {
 				if (p.GetGroup ().Equals (Parent.name)) {
-					Debug.Log (Parent.name + "\t" + click);
+					//Debug.Log (Parent.name + "\t" + click);
 					if (index == click) {
-						pname = p.GetName ();
+						propertyName = p.GetName ();
 
+						Debug.Log (propertyName + "\t");
 						if (PropertyDisplay.image2.gameObject.activeInHierarchy) {
-							if (!PropertyDisplay.image2.sprite.name.Equals (pname)) {
+							if (!PropertyDisplay.image2.sprite.name.Equals (propertyName)) {
 								
-								PropertyDisplay.doit (1);
+								//PropertyDisplay.doit (1);
 
 								if (PropertyDisplay.imageOther2.gameObject.activeInHierarchy) {
-									PropertyDisplay.imageOther2.gameObject.SetActive (false);
+									//PropertyDisplay.imageOther2.gameObject.SetActive (false);
 								}
 								didit = true;
 							} else {
 								//PropertyDisplay.doit (3);
-								PropertyDisplay.image2.gameObject.SetActive (false);
+								//PropertyDisplay.image2.gameObject.SetActive (false);
 							}
 						} else if (!PropertyDisplay.image2.gameObject.activeInHierarchy) {
 							didit = true;
-							PropertyDisplay.doit (1);
-							PropertyDisplay.image2.gameObject.SetActive (true);
+							//PropertyDisplay.doit (1);
+							//PropertyDisplay.image2.gameObject.SetActive (true);
 						}
+					}
+					index++;
+				}
+			}*/
+			//Debug.Log (propertyName + "\t");
+
+
+			foreach (Property p in properties) {
+				if (p.GetGroup ().Equals (Parent.name)) {
+					if (index == click) {
+						propertyName = p.GetName();
+						//Debug.Log (propertyName + "\t");
+
+						PropertyDisplay.doit (propertyName);
+
+
+						break;
 					}
 					index++;
 				}
 			}
 
-			if(TradeManager.IsTrading && !PropertyDisplay.image2.gameObject.activeInHierarchy) {
+			/*if(TradeManager.IsTrading && !PropertyDisplay.image2.gameObject.activeInHierarchy) {
 				properties = Game.players [TradeManager.PlayerToTrade].GetProperties ();
 				index = 0;
 				foreach (Property p in properties) {
@@ -70,7 +97,7 @@ public class PropertyClicked : MonoBehaviour, IPointerDownHandler {
 
 							if (PropertyDisplay.imageOther2.gameObject.activeInHierarchy) {
 								if (!PropertyDisplay.imageOther2.sprite.name.Equals (pname)) {
-									PropertyDisplay.doit (2);
+									//PropertyDisplay.doit (2);
 								} else {
 									PropertyDisplay.imageOther2.gameObject.SetActive (false);
 								}
@@ -82,7 +109,7 @@ public class PropertyClicked : MonoBehaviour, IPointerDownHandler {
 						index++;
 					}
 				}
-			}
+			}*/
 
 		} else if(Input.GetMouseButtonDown (1) && TradeManager.IsTrading) {
 			Debug.Log ("RIGHT CLICK");
@@ -92,7 +119,7 @@ public class PropertyClicked : MonoBehaviour, IPointerDownHandler {
 				if (p.GetGroup ().Equals (Parent.name)) {
 					Debug.Log ("Current:\t" + p.GetName());
 					if (index == click) {
-						pname = p.GetName ();
+						propertyName = p.GetName ();
 
 						TradeManager.currentPlayer.Add (p);
 
@@ -112,7 +139,7 @@ public class PropertyClicked : MonoBehaviour, IPointerDownHandler {
 				if (p.GetGroup ().Equals (Parent.name)) {
 					Debug.Log ("Other:\t" + p.GetName());
 					if (index == click) {
-						pname = p.GetName ();
+						propertyName = p.GetName ();
 
 						TradeManager.otherPlayer.Add (p);
 

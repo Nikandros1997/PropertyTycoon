@@ -29,8 +29,40 @@ public class PropertyDisplay : MonoBehaviour {
 		
 	}
 
-	public static void doit(int i) {
+	public static void doit(string spriteName) {
 		foreach(Sprite s in sprites2) {
+			//Debug.Log (s.name); 
+			if(s.name.Equals(spriteName)) {
+
+				if(image2.gameObject.activeInHierarchy) {
+					Debug.Log ("Change the image or turn off the image " + spriteName);
+
+					if (image2.sprite.name.Equals(spriteName)) {
+						image2.gameObject.SetActive (false);
+					} else {
+						image2.sprite = s;
+					}
+
+				} else if(!image2.gameObject.activeInHierarchy) {
+					Debug.Log ("Turn on the image " + spriteName);
+					image2.sprite = s;
+					image2.gameObject.SetActive (true);
+				}
+
+				/*if (!TradeManager.IsTrading) {
+					image2.sprite = s;
+					//imageOther2.sprite = s;
+					//PropertyDisplay.image2.gameObject.SetActive (false);
+					//image2.sprite = empty;
+				} else {
+					
+					//imageOther2.sprite = empty;
+				}*/
+			}
+		}
+
+		/*foreach(Sprite s in sprites2) {
+			Debug.Log (s.name); 
 			if(s.name.Equals(PropertyClicked.pname)) {
 
 				if (!TradeManager.IsTrading) {
@@ -54,6 +86,6 @@ public class PropertyDisplay : MonoBehaviour {
 					//imageOther2.sprite = empty;
 				}
 			}
-		}
+		}*/
 	}
 }

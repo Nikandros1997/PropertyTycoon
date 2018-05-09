@@ -1401,6 +1401,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 1423421210}
   click: 0
+  player: 0
 --- !u!1 &62931762
 GameObject:
   m_ObjectHideFlags: 0
@@ -2093,6 +2094,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 1520456683}
   click: 1
+  player: 1
 --- !u!1 &94374983
 GameObject:
   m_ObjectHideFlags: 0
@@ -2143,6 +2145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 284167048}
   click: 0
+  player: 0
 --- !u!1 &98129377
 GameObject:
   m_ObjectHideFlags: 0
@@ -2708,6 +2711,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 1022026094}
   click: 0
+  player: 1
 --- !u!1 &114936702 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1734551237178646, guid: ac0cf27c62d2a4aca9a795b883bde476,
@@ -2991,6 +2995,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 1390515780}
   click: 1
+  player: 1
 --- !u!1 &138161612
 GameObject:
   m_ObjectHideFlags: 0
@@ -3805,6 +3810,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 370291989}
   click: 2
+  player: 1
 --- !u!4 &166093706 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: f42838308461a634682be0b1eb1a5a4c, type: 3}
@@ -5263,6 +5269,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 1164379303}
   click: 2
+  player: 0
 --- !u!1 &242091758
 GameObject:
   m_ObjectHideFlags: 0
@@ -7117,6 +7124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 1164379303}
   click: 1
+  player: 0
 --- !u!1 &353531114
 GameObject:
   m_ObjectHideFlags: 0
@@ -7710,6 +7718,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 927980315}
   click: 1
+  player: 0
 --- !u!1 &376619778
 GameObject:
   m_ObjectHideFlags: 0
@@ -7787,6 +7796,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 364938176}
   click: 3
+  player: 0
 --- !u!1 &398229517
 GameObject:
   m_ObjectHideFlags: 0
@@ -8503,6 +8513,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 1387516829}
   click: 0
+  player: 0
 --- !u!1 &427366441
 GameObject:
   m_ObjectHideFlags: 0
@@ -8731,6 +8742,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 284167048}
   click: 2
+  player: 0
 --- !u!1 &447783968
 GameObject:
   m_ObjectHideFlags: 0
@@ -9846,6 +9858,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 184178993}
   click: 1
+  player: 0
 --- !u!1 &515708424
 GameObject:
   m_ObjectHideFlags: 0
@@ -10458,6 +10471,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 364938176}
   click: 1
+  player: 0
 --- !u!1 &541454369
 GameObject:
   m_ObjectHideFlags: 0
@@ -10508,6 +10522,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 927980315}
   click: 0
+  player: 0
 --- !u!1 &544886984
 GameObject:
   m_ObjectHideFlags: 0
@@ -10888,6 +10903,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 1164379303}
   click: 0
+  player: 0
 --- !u!1 &562888258
 GameObject:
   m_ObjectHideFlags: 0
@@ -14042,6 +14058,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 1602689184}
   click: 1
+  player: 1
 --- !u!1 &678070730
 GameObject:
   m_ObjectHideFlags: 0
@@ -16323,6 +16340,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 79532033}
   click: 1
+  player: 0
 --- !u!1 &741713233
 GameObject:
   m_ObjectHideFlags: 0
@@ -16519,6 +16537,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 364938176}
   click: 0
+  player: 0
 --- !u!1 &750172186
 GameObject:
   m_ObjectHideFlags: 0
@@ -16847,6 +16866,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 79532033}
   click: 0
+  player: 0
 --- !u!1 &773298401
 GameObject:
   m_ObjectHideFlags: 0
@@ -18402,6 +18422,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 1602673140}
   click: 0
+  player: 1
 --- !u!1 &844527865
 GameObject:
   m_ObjectHideFlags: 0
@@ -18821,6 +18842,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 370291989}
   click: 0
+  player: 1
 --- !u!1 &862716608 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100002, guid: 4d6b7392a3fa04d63a2035cf0f1dfe81, type: 3}
@@ -19522,6 +19544,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 1553897485}
   click: 1
+  player: 1
 --- !u!1 &895628776
 GameObject:
   m_ObjectHideFlags: 0
@@ -19640,6 +19663,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 1387516829}
   click: 1
+  player: 0
 --- !u!1 &900343972
 GameObject:
   m_ObjectHideFlags: 0
@@ -20319,6 +20343,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 1390515780}
   click: 2
+  player: 1
 --- !u!1 &912407383
 GameObject:
   m_ObjectHideFlags: 0
@@ -20918,6 +20943,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 1553897485}
   click: 3
+  player: 1
 --- !u!1 &944360291
 GameObject:
   m_ObjectHideFlags: 0
@@ -23716,6 +23742,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 184178993}
   click: 0
+  player: 0
 --- !u!1 &1046730430
 GameObject:
   m_ObjectHideFlags: 0
@@ -25786,6 +25813,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 1520456683}
   click: 0
+  player: 1
 --- !u!1 &1153405351
 GameObject:
   m_ObjectHideFlags: 0
@@ -29250,6 +29278,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 974256958}
   click: 0
+  player: 0
 --- !u!1 &1302724081
 GameObject:
   m_ObjectHideFlags: 0
@@ -29628,6 +29657,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 1022026094}
   click: 1
+  player: 1
 --- !u!1 &1309926839
 GameObject:
   m_ObjectHideFlags: 0
@@ -30927,6 +30957,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 523843835}
   click: 1
+  player: 1
 --- !u!1 &1386592670
 GameObject:
   m_ObjectHideFlags: 0
@@ -31343,6 +31374,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 1553897485}
   click: 2
+  player: 1
 --- !u!1 &1399478150
 GameObject:
   m_ObjectHideFlags: 0
@@ -31575,6 +31607,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 1553897485}
   click: 0
+  player: 1
 --- !u!1 &1423421210
 GameObject:
   m_ObjectHideFlags: 0
@@ -32054,6 +32087,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 927980315}
   click: 2
+  player: 0
 --- !u!1 &1453751303
 GameObject:
   m_ObjectHideFlags: 0
@@ -32104,6 +32138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 1602673140}
   click: 1
+  player: 1
 --- !u!1 &1454673646
 GameObject:
   m_ObjectHideFlags: 0
@@ -32672,6 +32707,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 370291989}
   click: 1
+  player: 1
 --- !u!1 &1486155990
 GameObject:
   m_ObjectHideFlags: 0
@@ -32794,6 +32830,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 686348161}
   click: 1
+  player: 0
 --- !u!1001 &1489523040
 Prefab:
   m_ObjectHideFlags: 0
@@ -33500,6 +33537,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 1390515780}
   click: 0
+  player: 1
 --- !u!1 &1519084618
 GameObject:
   m_ObjectHideFlags: 0
@@ -33550,6 +33588,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 1387516829}
   click: 2
+  player: 0
 --- !u!1 &1519908818 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1734551237178646, guid: ac0cf27c62d2a4aca9a795b883bde476,
@@ -33787,34 +33826,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprites:
+  - {fileID: 21300000, guid: b48052d010b6e4a3fa7e04cdeb53e314, type: 3}
+  - {fileID: 21300000, guid: 23e4a308fe934494d93898568ddd224c, type: 3}
+  - {fileID: 21300000, guid: fc112b85438d6407e9932c2d46d88bc7, type: 3}
   - {fileID: 21300000, guid: ae829ec9c92fa448fa81af4b5403a0c0, type: 3}
   - {fileID: 21300000, guid: 99f5aac61e87c44eda8cad591d2ace1a, type: 3}
-  - {fileID: 21300000, guid: 99f5aac61e87c44eda8cad591d2ace1a, type: 3}
-  - {fileID: 21300000, guid: fc112b85438d6407e9932c2d46d88bc7, type: 3}
-  - {fileID: 21300000, guid: 23e4a308fe934494d93898568ddd224c, type: 3}
-  - {fileID: 21300000, guid: b48052d010b6e4a3fa7e04cdeb53e314, type: 3}
-  - {fileID: 21300000, guid: 0fb5f364ff06749248911d96e2a47f46, type: 3}
+  - {fileID: 21300000, guid: ecdb06b08cc4c4f5c8e0e242a4c1f6e6, type: 3}
+  - {fileID: 21300000, guid: 64cff6e31c41f4a0aac379983525c085, type: 3}
+  - {fileID: 21300000, guid: 64810bf2ef07a48288cbcb11fd233298, type: 3}
+  - {fileID: 21300000, guid: e28a4e33191a842a18e7883415eff265, type: 3}
+  - {fileID: 21300000, guid: 266fe6f2107804251934dbfa4d69f588, type: 3}
+  - {fileID: 21300000, guid: 3a5279541d42744a48a81a5476d3e9aa, type: 3}
+  - {fileID: 21300000, guid: 3cc34d67cd8774392b9879c363126c39, type: 3}
+  - {fileID: 21300000, guid: 9071aa6ba52ee45ec8c0d39e95d2d222, type: 3}
+  - {fileID: 21300000, guid: c4da08d8f19654672a4ad4103f5d9ec4, type: 3}
   - {fileID: 21300000, guid: 0fb5f364ff06749248911d96e2a47f46, type: 3}
   - {fileID: 21300000, guid: ba78503d25aac46c48ef49fa55c3ce81, type: 3}
-  - {fileID: 21300000, guid: c4da08d8f19654672a4ad4103f5d9ec4, type: 3}
-  - {fileID: 21300000, guid: c4da08d8f19654672a4ad4103f5d9ec4, type: 3}
-  - {fileID: 21300000, guid: 3a5279541d42744a48a81a5476d3e9aa, type: 3}
-  - {fileID: 21300000, guid: 9071aa6ba52ee45ec8c0d39e95d2d222, type: 3}
-  - {fileID: 21300000, guid: 3cc34d67cd8774392b9879c363126c39, type: 3}
-  - {fileID: 21300000, guid: 8818f49a960364f87bde4370ac213295, type: 3}
+  - {fileID: 21300000, guid: 0743d2f8391f34b1ab614e04ebe10c1d, type: 3}
   - {fileID: 21300000, guid: e12a70f33ebf1475cb2e3faf94f02895, type: 3}
-  - {fileID: 21300000, guid: 0743d2f8391f34b1ab614e04ebe10c1d, type: 3}
-  - {fileID: 21300000, guid: 0743d2f8391f34b1ab614e04ebe10c1d, type: 3}
+  - {fileID: 21300000, guid: 8818f49a960364f87bde4370ac213295, type: 3}
+  - {fileID: 21300000, guid: 54dbbd5b618314dc5aa4c9a5394db964, type: 3}
   - {fileID: 21300000, guid: fdfa118298287490aabe18a0f6fb8a22, type: 3}
   - {fileID: 21300000, guid: a43f5f2675a054a1691e404ecd0123c0, type: 3}
   - {fileID: 21300000, guid: a43f5f2675a054a1691e404ecd0123c0, type: 3}
-  - {fileID: 21300000, guid: 54dbbd5b618314dc5aa4c9a5394db964, type: 3}
-  - {fileID: 21300000, guid: 266fe6f2107804251934dbfa4d69f588, type: 3}
-  - {fileID: 21300000, guid: 64810bf2ef07a48288cbcb11fd233298, type: 3}
-  - {fileID: 21300000, guid: e28a4e33191a842a18e7883415eff265, type: 3}
-  - {fileID: 21300000, guid: e28a4e33191a842a18e7883415eff265, type: 3}
-  - {fileID: 21300000, guid: 64cff6e31c41f4a0aac379983525c085, type: 3}
-  - {fileID: 21300000, guid: ecdb06b08cc4c4f5c8e0e242a4c1f6e6, type: 3}
+  - {fileID: 21300000, guid: a43f5f2675a054a1691e404ecd0123c0, type: 3}
+  - {fileID: 21300000, guid: a43f5f2675a054a1691e404ecd0123c0, type: 3}
+  - {fileID: 21300000, guid: a43f5f2675a054a1691e404ecd0123c0, type: 3}
+  - {fileID: 21300000, guid: a43f5f2675a054a1691e404ecd0123c0, type: 3}
+  - {fileID: 21300000, guid: a43f5f2675a054a1691e404ecd0123c0, type: 3}
   image: {fileID: 1847423072}
   imageOther: {fileID: 199964069}
 --- !u!1 &1532356110
@@ -33867,6 +33906,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 686348161}
   click: 0
+  player: 0
 --- !u!1 &1536979964
 GameObject:
   m_ObjectHideFlags: 0
@@ -34293,6 +34333,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 2113629790}
   click: 0
+  player: 1
 --- !u!1 &1551568734
 GameObject:
   m_ObjectHideFlags: 0
@@ -34722,6 +34763,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 284167048}
   click: 1
+  player: 0
 --- !u!1 &1559940279
 GameObject:
   m_ObjectHideFlags: 0
@@ -37200,6 +37242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 686348161}
   click: 2
+  player: 0
 --- !u!1 &1648319211
 GameObject:
   m_ObjectHideFlags: 0
@@ -37875,6 +37918,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 22775386}
   click: 1
+  player: 1
 --- !u!1 &1670453157
 GameObject:
   m_ObjectHideFlags: 0
@@ -38444,6 +38488,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 2113629790}
   click: 2
+  player: 1
 --- !u!1 &1686658902
 GameObject:
   m_ObjectHideFlags: 0
@@ -39487,6 +39532,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 1423421210}
   click: 1
+  player: 0
 --- !u!1 &1737673196
 GameObject:
   m_ObjectHideFlags: 0
@@ -39819,6 +39865,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 974256958}
   click: 1
+  player: 0
 --- !u!1 &1755444609
 GameObject:
   m_ObjectHideFlags: 0
@@ -41817,6 +41864,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 523843835}
   click: 0
+  player: 1
 --- !u!1 &1850868995
 GameObject:
   m_ObjectHideFlags: 0
@@ -42013,6 +42061,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 1602689184}
   click: 0
+  player: 1
 --- !u!1 &1856765788
 GameObject:
   m_ObjectHideFlags: 0
@@ -42812,6 +42861,7 @@ RectTransform:
   - {fileID: 1520456684}
   - {fileID: 1386592671}
   - {fileID: 199964071}
+  - {fileID: 1941638475}
   m_Father: {fileID: 101971639}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -43102,6 +43152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 2113629790}
   click: 1
+  player: 1
 --- !u!1 &1896124080
 GameObject:
   m_ObjectHideFlags: 0
@@ -43220,6 +43271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 523843835}
   click: 2
+  player: 1
 --- !u!1 &1902180583
 GameObject:
   m_ObjectHideFlags: 0
@@ -43631,6 +43683,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 1423421210}
   click: 2
+  player: 0
 --- !u!1001 &1933565236
 Prefab:
   m_ObjectHideFlags: 0
@@ -43823,6 +43876,82 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1939989121}
+--- !u!1 &1941638474
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1941638475}
+  - component: {fileID: 1941638476}
+  m_Layer: 5
+  m_Name: Script
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1941638475
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1941638474}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1875430144}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -14.500064, y: 228.39828}
+  m_SizeDelta: {x: 361.9, y: 440.5}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1941638476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1941638474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cdbd730df305410190d961c70e303fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: b48052d010b6e4a3fa7e04cdeb53e314, type: 3}
+  - {fileID: 21300000, guid: 23e4a308fe934494d93898568ddd224c, type: 3}
+  - {fileID: 21300000, guid: fc112b85438d6407e9932c2d46d88bc7, type: 3}
+  - {fileID: 21300000, guid: ae829ec9c92fa448fa81af4b5403a0c0, type: 3}
+  - {fileID: 21300000, guid: 99f5aac61e87c44eda8cad591d2ace1a, type: 3}
+  - {fileID: 21300000, guid: ecdb06b08cc4c4f5c8e0e242a4c1f6e6, type: 3}
+  - {fileID: 21300000, guid: 64cff6e31c41f4a0aac379983525c085, type: 3}
+  - {fileID: 21300000, guid: 64810bf2ef07a48288cbcb11fd233298, type: 3}
+  - {fileID: 21300000, guid: e28a4e33191a842a18e7883415eff265, type: 3}
+  - {fileID: 21300000, guid: 266fe6f2107804251934dbfa4d69f588, type: 3}
+  - {fileID: 21300000, guid: 3a5279541d42744a48a81a5476d3e9aa, type: 3}
+  - {fileID: 21300000, guid: 3cc34d67cd8774392b9879c363126c39, type: 3}
+  - {fileID: 21300000, guid: 9071aa6ba52ee45ec8c0d39e95d2d222, type: 3}
+  - {fileID: 21300000, guid: c4da08d8f19654672a4ad4103f5d9ec4, type: 3}
+  - {fileID: 21300000, guid: 0fb5f364ff06749248911d96e2a47f46, type: 3}
+  - {fileID: 21300000, guid: ba78503d25aac46c48ef49fa55c3ce81, type: 3}
+  - {fileID: 21300000, guid: 0743d2f8391f34b1ab614e04ebe10c1d, type: 3}
+  - {fileID: 21300000, guid: e12a70f33ebf1475cb2e3faf94f02895, type: 3}
+  - {fileID: 21300000, guid: 8818f49a960364f87bde4370ac213295, type: 3}
+  - {fileID: 21300000, guid: 54dbbd5b618314dc5aa4c9a5394db964, type: 3}
+  - {fileID: 21300000, guid: fdfa118298287490aabe18a0f6fb8a22, type: 3}
+  - {fileID: 21300000, guid: a43f5f2675a054a1691e404ecd0123c0, type: 3}
+  - {fileID: 21300000, guid: a43f5f2675a054a1691e404ecd0123c0, type: 3}
+  - {fileID: 21300000, guid: a43f5f2675a054a1691e404ecd0123c0, type: 3}
+  - {fileID: 21300000, guid: a43f5f2675a054a1691e404ecd0123c0, type: 3}
+  - {fileID: 21300000, guid: a43f5f2675a054a1691e404ecd0123c0, type: 3}
+  - {fileID: 21300000, guid: a43f5f2675a054a1691e404ecd0123c0, type: 3}
+  - {fileID: 21300000, guid: a43f5f2675a054a1691e404ecd0123c0, type: 3}
+  image: {fileID: 1847423072}
+  imageOther: {fileID: 199964069}
 --- !u!1 &1942353012
 GameObject:
   m_ObjectHideFlags: 0
@@ -43873,6 +44002,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 1022026094}
   click: 2
+  player: 1
 --- !u!1001 &1946167147
 Prefab:
   m_ObjectHideFlags: 0
@@ -44698,6 +44828,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 22775386}
   click: 0
+  player: 1
 --- !u!1 &1996371179
 GameObject:
   m_ObjectHideFlags: 0
@@ -46921,6 +47052,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 364938176}
   click: 2
+  player: 0
 --- !u!1 &2098381068
 GameObject:
   m_ObjectHideFlags: 0
@@ -47107,6 +47239,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 22775386}
   click: 2
+  player: 1
 --- !u!1 &2100599697
 GameObject:
   m_ObjectHideFlags: 0
