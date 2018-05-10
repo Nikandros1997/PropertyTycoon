@@ -5,15 +5,16 @@ using UnityEngine.UI;
 
 public class Bot : MonoBehaviour
 {
-    
 	public GameObject TokenScreen;
 	public GameObject RollScreen;
 	public GameObject BuyScreen;
 	public GameObject BidScreen;
+	public GameObject EndTurnScreen;
+	public GameObject OwnedScreen;
 	public GameObject RollButton;
 	public Toggle[] Token;
 	public Toggle[] Difficulty;
-    
+
 	private bool EarlyGame;
 	private static int NumOfPlayers;
 	private static int NoP_Val;
@@ -22,7 +23,8 @@ public class Bot : MonoBehaviour
 	private int[] PropertyRank = new int[10];
 	private int difficlty;
 	private int CurrentPlayer;
-    
+	private Toggle[] buy_au_tog;
+
 	private int[] difficulties = { 0, 1, 2 };
 
 	void Start ()
@@ -34,20 +36,20 @@ public class Bot : MonoBehaviour
 	void Update ()
 	{
 		CurrentPlayer = Game.currentPlayer;
-        
+
 		/*
             Token Select:   Done
             Roll Dice:      Done
             Buy:            Processing
             Auction:        -
         */
-        
+
 		// Token Select
 		if (TokenScreen.activeInHierarchy && AssignTokens.isBot) {
-			Debug.Log ("Bot Ting");
-            
+			Debug.Log ("Token");
+
 			difficlty = GetDifficulty ();
-            
+
 			int n = Random.Range (0, 6);
 			Toggle tok = Token [n];
 			if (tok.interactable) {
@@ -55,13 +57,14 @@ public class Bot : MonoBehaviour
 				tok.isOn = true;
 				TokenScreen.GetComponentInChildren<Button> ().onClick.Invoke ();
 			}
-            
+
 			Debug.Log ("Dif: " + difficlty + " token: " + n);
 		}
-        
+
 		if (checkPlayer (CurrentPlayer) && Game.players [CurrentPlayer].IsBot ()) {
 			//Roll Dice
 			if (RollScreen.activeInHierarchy) {
+				Debug.Log ("Roll");
 				//Debug.Log("rollScreen active");
 				//Button newBut = rollScreen.GetComponent<Button>();   //WORKS
 				Debug.Log ("Bot auto roll");
@@ -71,83 +74,67 @@ public class Bot : MonoBehaviour
             //Buy Property
             else if (BuyScreen.activeInHierarchy) {
 				//Debug.Log ("Boo");
-				EarlyGame = (Game.TurnCounter < GetEarlyGame ());
+				Debug.Log ("Buy/Auction");
+				EarlyGame = (Game.TurnCounter < NumOfPlayers*7);
 				PropertyRank = createPropertyRank ();
+
 				int pos = Game.players [CurrentPlayer].GetPosition ();
 				string group = Game.board [pos].GetGroup ();
+
 				PurchaseRank = GetFinalRank (pos, group); // 1 - 20
 
 				if (PurchaseRank >= 0) {
 					//Debug.Log ("Group: " + group + " Rank: " + PurchaseRank);
 
-					int number = Random.Range (0, 100);
-					int PR_Perc = (PurchaseRank / 20) * 100;
-	                
-					Toggle[] buy_au_tog = BuyScreen.GetComponentsInChildren<Toggle> ();
-					Toggle buyTog = buy_au_tog [0];
-					Toggle auTog = buy_au_tog [1];
-	                
+					double number = Random.Range (0, 100);
+					double PR_Perc = ((double)PurchaseRank / 20) * 100;
+
+					buy_au_tog = BuyScreen.GetComponentsInChildren<Toggle> ();
+
 					//Debug.Log (buyTog.name + " and " + auTog.name+" found");
-	                
+					Debug.Log ("PurchaseRank: "+PurchaseRank+" Number: " + number +" Percentage: "+PR_Perc);
+
 					switch (difficlty) {
 					case 0: //easy
-						//Debug.Log ("Player: " + Game.players [CurrentPlayer] + " Pos: " + pos);
-						if (number < PR_Perc) {
-							//Buy prop
-							Game.players [CurrentPlayer].BuyProperty (Game.board [pos], 0);
-							BuyScreen.SetActive (false);
-						} else {
-							//Auction
-							BuyScreen.SetActive (false);
-							BidScreen.SetActive (true);
-
-						}
+						BuyOrAuction (number < PR_Perc - 40);
 						break;
 					case 1:
+						BuyOrAuction (number < PR_Perc - 20);
 						break;
 					case 2:
-						if (number < PR_Perc) {
-							//Buy prop
-							Game.players [CurrentPlayer].BuyProperty (Game.board [pos], 0);
-							BuyScreen.SetActive (false);
-						} else {
-							//Auction
-							BuyScreen.SetActive (false);
-							BidScreen.SetActive (true);
-	                            
-						}
+						BuyOrAuction (number < PR_Perc);
 						break;
 					default:
 						Debug.Log ("No difficlty found");
 						break;
 					}
 				}
-			} else if (BidScreen.activeInHierarchy) {
-				Debug.Log ("bidScreen active");
+			}
+			else if (BidScreen.activeInHierarchy) {
+				Debug.Log ("Bid");
+				InputField[] inpFields = BidScreen.GetComponentsInChildren<InputField>();
+				Debug.Log ("InputFields: " + inpFields);
+			}
+			else if (EndTurnScreen.activeInHierarchy){
+				Debug.Log ("EndTurn");
+				EndTurnScreen.GetComponentInChildren<Button> ().onClick.Invoke ();
+			}
+			else if (OwnedScreen.activeInHierarchy){
+				Debug.Log ("Owned");
+				string s = "Bot has paid you money";
+				OwnedScreen.GetComponentInChildren<Text> ().text = s;
 			}
 		}
 	}
 
-	private int GetEarlyGame ()
-	{
-		switch (NumOfPlayers) {
-		case 2: 
-			NoP_Val = 1;
-			return 20;
-		case 3:
-		case 4:
-			{
-				NoP_Val = 2;
-				return 30;}
-		case 5:
-		case 6:
-			{
-				NoP_Val = 3;
-				return 45;}
-		default: 
-			NoP_Val = 0;
-			return 25;
-		}
+	private void BuyOrAuction(bool buy){
+		int i = buy ? 0 : 1;
+		buy_au_tog [i].isOn = !buy_au_tog [i].isOn;
+		//Toggle (buy_au_tog [i].isOn);
+	}
+
+	private bool Toggle(bool b){
+		return !b;
 	}
 
 	private int GetFinalRank (int pos, string group)
@@ -156,18 +143,13 @@ public class Bot : MonoBehaviour
 		if (EarlyGame)
 			PR += 2;
 		PR += GetPropertyRank (group);
-        
+
 		int money = Game.players [CurrentPlayer].GetMoney ();
 		int price = Game.board [pos].GetPrice ();
 		PR += GetMoneyRating (money, price);
-        
-        
-		return PR;
-	}
 
-	private bool Purchase (int rank)
-	{
-		return false;
+
+		return PR;
 	}
 
 	private int GetMoneyRating (int money, int price)
@@ -203,31 +185,23 @@ public class Bot : MonoBehaviour
 			switch (NoP_Val) {
 			case 0:
 				return new int[]{ 1, 2, 2, 5, 3, 5, 3, 2, 1, 2 };
-				break;
 			case 1:
 				return new int[]{ 0, 1, 2, 5, 3, 5, 5, 3, 2, 2 };
-				break;
 			case 2:
 				return new int[]{ 0, 1, 2, 4, 3, 5, 3, 4, 5, 3 };
-				break;
 			default:
 				return new int[]{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-				break;
 			}
 		} else {
 			switch (NoP_Val) {
 			case 0:
 				return new int[]{ 0, 1, 1, 4, 3, 5, 4, 4, 3, 4 };
-				break;
 			case 1:
 				return new int[]{ 0, 1, 1, 3, 2, 4, 5, 3, 3, 4 };
-				break;
 			case 2:
 				return new int[]{ 0, 1, 2, 4, 3, 5, 3, 4, 5, 3 };
-				break;
 			default:
 				return new int[]{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-				break;
 			}
 		}
 	}

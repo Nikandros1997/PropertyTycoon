@@ -104,6 +104,8 @@ public class TileListener : MonoBehaviour {
 		} else {
 			// say that there are not enough players to auction properties.
 			Debug.Log ("there are not enough players to auction properties.");
+			auction2.SetActive (false);
+			endTurn2.SetActive (true);
 		}
 	}
 
