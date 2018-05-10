@@ -15,18 +15,25 @@ public class AssignTokens : MonoBehaviour {
 
 	private int index = 0;
 
+	// the names of all the tokens.
 	private string[] tokens = {"Boot", "Phone", "Goblet", "Spoon", "Cat", "Hatstand"};
 
 	void Start() {
 
 	}
 
+	/**
+	 * Sets the header token chooser.
+	 */
 	public void setHeader() {
 		if(index < 6) {
 			header.text = ValidateSetup.names[index] + " Choose Token:";
 		}
 	}
 
+	/**
+	 * Assign token chosen on the token chooser.
+	 */
 	public void chooseToken() {
 		//Debug.Log ("chooseToken()");
 
@@ -35,9 +42,6 @@ public class AssignTokens : MonoBehaviour {
 
 			if(t.isOn) {
 				string token = tokens[i];
-
-				//Game.players [index] = new Player (ValidateSetup.names[index], token, ValidateSetup.bot[index]);
-				//Debug.Log (tokens[i]);
 				Game.players.Add (new Player(ValidateSetup.names[index], token, ValidateSetup.bot[index]));
 				ToggleGroup tg = t.GetComponentInParent<ToggleGroup> ();
 				tg.SetAllTogglesOff ();

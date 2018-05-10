@@ -11,16 +11,18 @@ public class CircularMotion : MonoBehaviour {
 	void Start() {
 	}
 
+	/**
+	 * Makes the camera object move in circular motion around the table.
+	 */
 	void Update() {
 		if (!GameStarted) {
 			orbitAround ();
 		} else {
-			Quaternion rotation = Quaternion.Euler (-12.0f, 90.0f, 180.0f);
-			Vector3 dir = new Vector3 (1, 1, 1);
 			Vector3 v = new Vector3 (1, 22, 0);
 			this.transform.position = v;// + rotation*dir;
 			this.transform.LookAt (Cube.transform.position);
 
+			// changes to the on top camera.
 			this.gameObject.SetActive (false);
 
 			/*Player p = Game.players [Game.currentPlayer];
@@ -35,14 +37,23 @@ public class CircularMotion : MonoBehaviour {
 		}
 	}
 
+	/**
+	 * Sets the attribute of the game started.
+	 */
 	public void StartGame() {
 		GameStarted = true;
 	}
 
+	/**
+	 * Declares a game as finished.
+	 */
 	public void NoGame() {
 		GameStarted = false;
 	}
 
+	/**
+	 * Circular movement.
+	 */
 	void orbitAround() {
 		transform.RotateAround (Cube.transform.position, Vector3.down, speed * Time.deltaTime);
 	}

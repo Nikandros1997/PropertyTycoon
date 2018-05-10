@@ -17,14 +17,12 @@ public class PlayersScripts : MonoBehaviour {
 		
 	}
 
+	/**
+	 * Fill the names on the left panel.
+	 */
 	public void showPlayers() {
-
-		//Debug.Log ("showPlayers()");
-
 		for(int i = 0; i < AssignTokens.numberOfPlayers; i++) {
 			playerObj [i].SetActive (true);
-
-
 
 			if (Game.players [i].isBot ()) {
 				//Debug.Log ("Player no " + (i + 1) + " is a bot");

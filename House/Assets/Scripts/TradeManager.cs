@@ -37,6 +37,10 @@ public class TradeManager : MonoBehaviour {
 	}
 
 	// Update is called once per frame
+
+	/**
+	 * Updates the trading fields.
+	 */
 	void Update () {
 		if(doit) {
 			if (TradeOption == -1) {
@@ -107,12 +111,17 @@ public class TradeManager : MonoBehaviour {
 		}
 	}
 
+	/**
+	 * Start trade.
+	 */
 	public void Trade() {
 		IsTrading = true;
 	}
 
+	/**
+	 * Show trade pages.
+	 */
 	public void Trade(int number) {
-		
 		if(Game.rolled) {
 			if (number != Game.currentPlayer) {
 				TradeWithPlayer (number);
@@ -126,6 +135,9 @@ public class TradeManager : MonoBehaviour {
 		}
 	}
 
+	/**
+	 * Show trade pages.
+	 */
 	public void Offer(int option) {
 
 		if(currentPlayer.Count == 0 || otherPlayer.Count == 0) {
@@ -149,6 +161,9 @@ public class TradeManager : MonoBehaviour {
 		doit = true;
 	}
 
+	/**
+	 * Update fields across UI.
+	 */
 	public void TradeWithPlayer(int number) {
 		PlayerToTrade = number;
 
@@ -158,6 +173,9 @@ public class TradeManager : MonoBehaviour {
 		BuildingManager.needsUpdate = true;
 	}
 
+	/**
+	 * Turns off UI objects.
+	 */
 	public void AcceptOffer() {
 		foreach (Text t in currentPlayerText1) {
 			t.text = "";
@@ -216,6 +234,9 @@ public class TradeManager : MonoBehaviour {
 		BuildingManager.needsUpdate = true;
 	}
 
+	/**
+	 * Stop trade.
+	 */
 	public void StopTrade() {
 		IsTrading = false;
 	}

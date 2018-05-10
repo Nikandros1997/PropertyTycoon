@@ -19,6 +19,14 @@ public class BuildingManager : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
+	/**
+	 * 
+	 * Fields Updated:
+	 *-----------------
+	 *	- The property display of the current player.
+	 *	- The property display of the other player, when in trade.
+	 * 
+	 */
 	void Update () {
 		if(needsUpdate) {
 			int currentPlayer = Game.currentPlayer;
@@ -78,8 +86,6 @@ public class BuildingManager : MonoBehaviour {
 					}
 				}
 			}
-
-
 
 			needsUpdate = false;
 

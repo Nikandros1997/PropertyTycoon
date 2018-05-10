@@ -24,7 +24,10 @@ public class PropertyClicked : MonoBehaviour, IPointerDownHandler {
 		
 	}
 
-
+	/**
+	 * When the player left clicks, then shows the property card on the screen.
+	 * When the player right clicks, and it is on trade it adds the card in list to be traded.
+	 */
 	public void OnPointerDown (PointerEventData eventData) {
 		PlayerChosen = player;
 
@@ -45,7 +48,7 @@ public class PropertyClicked : MonoBehaviour, IPointerDownHandler {
 						propertyName = p.GetName();
 						//Debug.Log (propertyName + "\t");
 
-						PropertyDisplay.doit (propertyName);
+						PropertyDisplay.SetSprite (propertyName);
 
 
 						break;
@@ -54,7 +57,6 @@ public class PropertyClicked : MonoBehaviour, IPointerDownHandler {
 				}
 			}
 		} else if(Input.GetMouseButtonDown (1) && TradeManager.IsTrading) {
-			Debug.Log ("==============================================================");
 			List<Property> properties;
 			if (player == 0) {
 				properties = Game.players [Game.currentPlayer].GetProperties ();
@@ -91,9 +93,5 @@ public class PropertyClicked : MonoBehaviour, IPointerDownHandler {
 			}
 
 		}
-	}
-
-	public void OnRightPointerDown(PointerEventData eventData) {
-
 	}
 }

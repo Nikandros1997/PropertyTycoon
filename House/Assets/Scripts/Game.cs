@@ -27,18 +27,15 @@ public class Game : MonoBehaviour {
 
 	public static bool rolled = false;
 
-	// board check
-	// pot luck
-	// opportunity knock
-	// players check
-	// dice check
-
 
 	// Use this for initialization
 	void Start () {
 		//Debug.Log ("Game Object");
 	}
 
+	/**
+	 * Starts the game.
+	 */
 	public void StartGame() {
 		HasStarted = true;
 	}
@@ -54,12 +51,16 @@ public class Game : MonoBehaviour {
 		}
 	}
 
-
+	/**
+	 * Checks if it rolled.
+	 */
 	public void initializeRoll() {
 		rolled = false;
 	}
 
-
+	/**
+	 * Does all the rolling procedure.
+	 */
 	public void RollDice() {
 
 		int roll = dice.Roll ();
@@ -74,6 +75,7 @@ public class Game : MonoBehaviour {
 
 				// Send player in jail.
 				Debug.Log ("In jail");
+				// Add the code for the player to go to the jail.
 			}
 		} else {
 
@@ -89,12 +91,11 @@ public class Game : MonoBehaviour {
 		Vector3 pos = boardGraphics [p.GetPosition ()].transform.position;
 
 		Tokens [p.GetToken ()].transform.position = pos;
-		//Debug.Log (board[p.GetPosition()].GetName());
-		//Debug.Log (Tokens [p.getToken ()].name + ": " + Tokens [p.getToken ()].transform.position + "\tStartingTile: " + boardGraphics [p.GetPosition ()].transform.position);
-
-		//Debug.Log ("Total: " + dice.GetRoll() + "\tCounter: " + DoublesCounter);
 	}
 
+	/**
+	 * Add all the tokens in a dictionary.
+	 */
 	public void AddTokens() {
 		Tokens = new Dictionary<string, GameObject> ();
 
@@ -103,13 +104,11 @@ public class Game : MonoBehaviour {
 		}
 
 		tokens = null;
-
-		/*Debug.Log (Tokens.Count);
-		for(int i = 0; i < AssignTokens.numberOfPlayers; i++) {
-			Debug.Log (Tokens[tokens[i].name]);
-		}*/
 	}
 
+	/**
+	 * Call next player.
+	 */
 	public void nextPlayerSimple() {
 		currentPlayer++;
 		//Debug.Log ("Next player is player no. " + currentPlayer);
@@ -121,6 +120,9 @@ public class Game : MonoBehaviour {
 		BuildingManager.needsUpdate = true;
 	}
 
+	/**
+	 * Call next player.
+	 */
 	public static void nextPlayer2() {
 		Debug.Log ("Next player is player no. " + currentPlayer);
 		currentPlayer++;
@@ -130,9 +132,5 @@ public class Game : MonoBehaviour {
 		}
 
 		BuildingManager.needsUpdate = true;
-	}
-
-	public void AuctionProperty() {
-
 	}
 }

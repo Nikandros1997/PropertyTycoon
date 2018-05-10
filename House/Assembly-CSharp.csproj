@@ -108,10 +108,8 @@
     <Compile Include="Assets\Scripts\BidManager.cs" />
     <Compile Include="Assets\Scripts\BuildingManager.cs" />
     <Compile Include="Assets\Scripts\CircularMotion.cs" />
-    <Compile Include="Assets\Scripts\Database.cs" />
     <Compile Include="Assets\Scripts\databaseConnection.cs" />
     <Compile Include="Assets\Scripts\Dice.cs" />
-    <Compile Include="Assets\Scripts\EmptyClass.cs" />
     <Compile Include="Assets\Scripts\FillNames.cs" />
     <Compile Include="Assets\Scripts\Game.cs" />
     <Compile Include="Assets\Scripts\Objects\Card.cs" />
@@ -125,9 +123,7 @@
     <Compile Include="Assets\Scripts\PlayersScripts.cs" />
     <Compile Include="Assets\Scripts\PropertyClicked.cs" />
     <Compile Include="Assets\Scripts\PropertyDisplay.cs" />
-    <Compile Include="Assets\Scripts\SetupNames.cs" />
     <Compile Include="Assets\Scripts\ShowBid.cs" />
-    <Compile Include="Assets\Scripts\TextManager.cs" />
     <Compile Include="Assets\Scripts\TileGameObject.cs" />
     <Compile Include="Assets\Scripts\TokenScript.cs" />
     <Compile Include="Assets\Scripts\TradeManager.cs" />

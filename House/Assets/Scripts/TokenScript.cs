@@ -18,6 +18,9 @@ public class TokenScript : MonoBehaviour {
 		
 	}
 
+	/**
+	 * Move the token on the board.
+	 */
 	public void move() {
 		//Vector3 pos = new Vector3 (StartingTile.transform.position.x, StartingTile.transform.position.y, StartingTile.transform.position.z);
 

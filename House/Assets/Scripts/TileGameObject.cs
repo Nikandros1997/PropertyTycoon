@@ -20,6 +20,9 @@ public class TileGameObject : MonoBehaviour, IPointerDownHandler {
 		
 	}
 
+	/**
+	 * Show the property display.
+	 */
 	public void OnPointerDown (PointerEventData eventData) {
 		Debug.Log ("Clicked tile.");
 		List<Property> properties = Game.players[Game.currentPlayer].GetProperties();

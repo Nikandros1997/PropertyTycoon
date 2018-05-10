@@ -24,7 +24,9 @@ public class FillNames : MonoBehaviour {
 			}
 		}
 	}
-
+	/**
+	 * Add all the names of the players in a list.
+	 */
 	public void addNames() {
 		//Debug.Log ("addNames()");
 		for (int i = 0; i < AssignTokens.numberOfPlayers; i++) {

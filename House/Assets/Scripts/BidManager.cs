@@ -8,6 +8,9 @@ public class BidManager : MonoBehaviour {
 	public InputField bidDisplay;
 	public Button[] bids;
 
+	/**
+	 * Sets the bid on the hidden field.
+	 */
 	public void SetBid(string bid) {
 		bidDisplay.text = bid;
 	}

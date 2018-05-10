@@ -26,7 +26,10 @@ public class PropertyDisplay : MonoBehaviour {
 		
 	}
 
-	public static void doit(string spriteName) {
+	/**
+	 * Sets the sprite of the property.
+	 */
+	public static void SetSprite(string spriteName) {
 		foreach(Sprite s in sprites2) {
 			//Debug.Log (s.name); 
 			if(s.name.Equals(spriteName)) {
@@ -47,44 +50,7 @@ public class PropertyDisplay : MonoBehaviour {
 					image2.sprite = s;
 					image2.gameObject.SetActive (true);
 				}
-
-				/*if (!TradeManager.IsTrading) {
-					image2.sprite = s;
-					//imageOther2.sprite = s;
-					//PropertyDisplay.image2.gameObject.SetActive (false);
-					//image2.sprite = empty;
-				} else {
-					
-					//imageOther2.sprite = empty;
-				}*/
 			}
 		}
-
-		/*foreach(Sprite s in sprites2) {
-			Debug.Log (s.name); 
-			if(s.name.Equals(PropertyClicked.pname)) {
-
-				if (!TradeManager.IsTrading) {
-					image2.sprite = s;
-					//imageOther2.sprite = s;
-					//PropertyDisplay.image2.gameObject.SetActive (false);
-					//image2.sprite = empty;
-				} else {
-
-					if (i == 1) {
-						image2.sprite = s;
-						PropertyDisplay.imageOther2.gameObject.SetActive (false);
-
-					} else if(i == 2) {
-						imageOther2.sprite = s;
-						PropertyDisplay.image2.gameObject.SetActive (false);
-					} else if(i == 3) {
-						image2.gameObject.SetActive (false);
-					}
-
-					//imageOther2.sprite = empty;
-				}
-			}
-		}*/
 	}
 }

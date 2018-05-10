@@ -114,19 +114,20 @@ public class TileListener : MonoBehaviour {
 		}
 	}
 
+	/**
+	 * Update fields.
+	 */
 	public void UpdateInputFieldPassword() {
 		bidInteger2.text = bidPassword2.text;
 	}
 
+	/**
+	 * The player bids money to the auction.
+	 */
 	public void Bid() {
 		if(bidInteger2.text.Equals("")) {
 			return;
 		}
-
-		//players = Game.players;
-		//Tile tile = Game.board[players [Game.currentPlayer].GetPosition ()];
-
-
 		int bid = Int32.Parse(bidInteger2.text);
 
 		if (HasTheMoney (Game.players [Game.currentPlayer], bid)) {
@@ -148,32 +149,23 @@ public class TileListener : MonoBehaviour {
 				+ "bid. Check if you can bid something "
 				+ "smaller. Otherwise, withdraw.");
 		}
-
-
-		/*if(highestBidder != -1 && highestBid > 0) {
-			Debug.Log ("Hey, "
-				+ players[highestBidder].GetName() + "! You are "
-				+ "the highest bidder. You just bought "
-				+ tile.GetName());
-				Game.currentPlayer = continuePlayer;
-			players[highestBidder].BuyProperty(tile);
-		} else {
-			// when there are 2 bidders and the first bidder leaves the auction, the second bidder doesn't have the opportunity to do its bid.
-			// first bidder bids 0
-			// second bidder doesn't have the opportunity to bid.
-			Debug.Log ("None bought this area. It is owned by the bank.");
-		}
-		endTurn2.SetActive (true);*/
 	}
 
+	/**
+	 * Checks if the player passes has money.
+	 * 
+	 * @p, Player, a player from the game.
+	 * @bidOrigin, int, 
+	 */
 	private bool HasTheMoney(Player p, int bidOrigin) {
-		if(BidSum(bidOrigin) <= p.GetMoney()) {
-			return true;
-		}
-
-		return false;
+		return BidSum(bidOrigin) <= p.GetMoney();
 	}
 
+	/**
+	 * Calculates the sum of all the bids that are owned by the player who bids right now.
+	 * 
+	 * @bidOrigin, int, the current bid of the player.
+	 */
 	private int BidSum(int bidOrigin) {
 		int bid = 0;
 
@@ -184,6 +176,9 @@ public class TileListener : MonoBehaviour {
 		return (bid + bidOrigin);
 	}
 
+	/**
+	 * Remove a player from the auction.
+	 */
 	public void LeaveAuction() {
 		Debug.Log (Game.currentPlayer);
 		Debug.Log("Hey,"
@@ -216,6 +211,11 @@ public class TileListener : MonoBehaviour {
 		} 
 	}
 
+	/**
+	 * Returns true if there at least two players in the auction, false otherwise.
+	 * 
+	 * @players, List<Player>, the list of all the players that play the game.
+	 */
     public static bool MinimumPlayersForAuction(List<Player> players) {
         int counter = 0;
 
@@ -226,14 +226,8 @@ public class TileListener : MonoBehaviour {
 			}
 		}
 		Debug.Log ("Counter: " + counter);
-		if(counter > 1) {
-			return true;
-		}
-
-		return false;
+		return counter > 1;
     }
-
-
 }
 
 

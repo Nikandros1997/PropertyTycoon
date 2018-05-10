@@ -30,14 +30,23 @@ public class Token {
 		return false;
 	}
 
+	/**
+	 * Return whether the token has passed the go, or not.
+	 */
 	public bool HasPassedGo() {
 		return passedGo;
 	}
 
+	/**
+	 * Returns the name, shape of the Token.
+	 */
 	public string GetShape() {
 		return shape;
 	}
 
+	/**
+	 * Returns the position of the token on the board.
+	 */
 	public int GetPosition() {
 		return position;
 	}
