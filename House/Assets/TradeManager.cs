@@ -23,6 +23,8 @@ public class TradeManager : MonoBehaviour {
 	public GameObject noSamePlayerWarning;
 	public GameObject TradeM;
 
+	public GameObject[] trades;
+
 	public GameObject[] contents;
 
 	public static bool doit = false;
@@ -38,6 +40,7 @@ public class TradeManager : MonoBehaviour {
 	void Update () {
 		if(doit) {
 			if (TradeOption == -1) {
+
 				foreach (Text t in currentPlayerText1) {
 					t.text = "";
 					t.gameObject.SetActive (false);
@@ -47,6 +50,7 @@ public class TradeManager : MonoBehaviour {
 					t.text = "";
 					t.gameObject.SetActive (false);
 				}
+
 
 				for (int i = 0; i < currentPlayer.Count; i++) {
 					currentPlayerText1 [i].text = currentPlayer [i].GetName ();
@@ -58,6 +62,7 @@ public class TradeManager : MonoBehaviour {
 					otherPlayerText1 [i].gameObject.SetActive (true);
 				}
 			} else if (TradeOption == 0) {
+
 				foreach (Text t in currentPlayerText2) {
 					t.text = "";
 					t.gameObject.SetActive (false);
@@ -98,14 +103,18 @@ public class TradeManager : MonoBehaviour {
 					otherPlayerText3 [i].text = otherPlayer [i].GetName ();
 					otherPlayerText3 [i].gameObject.SetActive (true);
 				}
-
 			}
-
 			doit = false;
 		}
 	}
 
+	public void Trade() {
+		IsTrading = true;
+
+	}
+
 	public void Trade(int number) {
+		
 		if(Game.rolled) {
 			if (number != Game.currentPlayer) {
 				TradeWithPlayer (number);
@@ -121,12 +130,22 @@ public class TradeManager : MonoBehaviour {
 
 	public void Offer(int option) {
 
+		if(currentPlayer.Count == 0 || otherPlayer.Count == 0) {
+			return;
+		}
+		trades [option].SetActive (true);
 		TradeOption = option;
 
 		if(option == 0) {
 			Debug.Log ("Counter offer 1");
+			TradeM.SetActive (false);
+			trades [option].SetActive (true);
+			trades [option + 1].SetActive (false);
 		} else if(option == 1) {
 			Debug.Log ("Counter offer 2");
+			TradeM.SetActive (false);
+			trades [option].SetActive (true);
+			trades [option - 1].SetActive (false);
 		}
 
 		doit = true;
@@ -138,12 +157,40 @@ public class TradeManager : MonoBehaviour {
 		currentPlayer = new List<Property> ();
 		otherPlayer = new List<Property> ();
 
-		IsTrading = true;
-
 		BuildingManager.needsUpdate = true;
 	}
 
 	public void AcceptOffer() {
+		foreach (Text t in currentPlayerText1) {
+			t.text = "";
+			t.gameObject.SetActive (false);
+		}
+
+		foreach (Text t in otherPlayerText1) {
+			t.text = "";
+			t.gameObject.SetActive (false);
+		}
+
+		foreach (Text t in currentPlayerText2) {
+			t.text = "";
+			t.gameObject.SetActive (false);
+		}
+
+		foreach (Text t in otherPlayerText2) {
+			t.text = "";
+			t.gameObject.SetActive (false);
+		}
+
+		foreach (Text t in currentPlayerText3) {
+			t.text = "";
+			t.gameObject.SetActive (false);
+		}
+
+		foreach (Text t in otherPlayerText3) {
+			t.text = "";
+			t.gameObject.SetActive (false);
+		}
+
 
 		Player p1 = Game.players [Game.currentPlayer];
 		Player p2 = Game.players [PlayerToTrade];
@@ -161,10 +208,14 @@ public class TradeManager : MonoBehaviour {
 			owned1.Add (p);
 		}
 
+		currentPlayer = new List<Property> ();
+		otherPlayer = new List<Property> ();
+
+		doit = true;
+
 		otherPlayerDisplay.SetActive (false);
 
 		BuildingManager.needsUpdate = true;
-		doit = true;
 	}
 
 	public void StopTrade() {

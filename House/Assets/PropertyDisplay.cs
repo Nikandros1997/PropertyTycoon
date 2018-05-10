@@ -11,8 +11,6 @@ public class PropertyDisplay : MonoBehaviour {
 	public Image image;
 	public static Image image2;
 
-	public Image imageOther;
-	public static Image imageOther2;
 
 	public static Sprite empty;
 
@@ -20,7 +18,6 @@ public class PropertyDisplay : MonoBehaviour {
 	void Start () {
 		sprites2 = sprites;
 		image2 = image;
-		imageOther2 = imageOther;
 		empty = image.sprite;
 	}
 	
@@ -36,9 +33,11 @@ public class PropertyDisplay : MonoBehaviour {
 
 				if(image2.gameObject.activeInHierarchy) {
 					Debug.Log ("Change the image or turn off the image " + spriteName);
+					Debug.Log ("This is where it goes wrong.");
 
 					if (image2.sprite.name.Equals(spriteName)) {
 						image2.gameObject.SetActive (false);
+						//image2.sprite = new Sprite();
 					} else {
 						image2.sprite = s;
 					}

@@ -54,6 +54,7 @@ public class PropertyClicked : MonoBehaviour, IPointerDownHandler {
 				}
 			}
 		} else if(Input.GetMouseButtonDown (1) && TradeManager.IsTrading) {
+			Debug.Log ("==============================================================");
 			List<Property> properties;
 			if (player == 0) {
 				properties = Game.players [Game.currentPlayer].GetProperties ();
@@ -67,7 +68,7 @@ public class PropertyClicked : MonoBehaviour, IPointerDownHandler {
 				if (p.GetGroup ().Equals (Parent.name)) {
 					if (index == click) {
 						propertyName = p.GetName();
-						//Debug.Log (propertyName);
+						Debug.Log (propertyName);
 
 						if (player == 0) {
 							if (!TradeManager.currentPlayer.Contains (p)) {
