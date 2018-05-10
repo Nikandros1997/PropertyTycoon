@@ -5709,8 +5709,8 @@ MonoBehaviour:
   BuyScreen: {fileID: 1721942117}
   BidScreen: {fileID: 738887487}
   EndTurnScreen: {fileID: 606304047}
+  OwnedScreen: {fileID: 586988827}
   RollButton: {fileID: 1107229247}
-  Owned: {fileID: 586988827}
   Token:
   - {fileID: 1307113406}
   - {fileID: 2054773876}

@@ -111,18 +111,21 @@ public class Bot : MonoBehaviour
 				}
 			}
 			else if (BidScreen.activeInHierarchy) {
-				Debug.Log ("Bid");
-				InputField[] inpFields = BidScreen.GetComponentsInChildren<InputField>();
-				Debug.Log ("InputFields: " + inpFields);
+//				Debug.Log ("Bid"+CurrentPlayer);
+//				InputField[] inpFields = BidScreen.GetComponentsInChildren<InputField>();
+//				Debug.Log ("InputFields: " + inpFields);
+				BidScreen.GetComponentInChildren<Button>().onClick.Invoke();
 			}
 			else if (EndTurnScreen.activeInHierarchy){
-				Debug.Log ("EndTurn");
+				Debug.Log ("EndTurn "+CurrentPlayer);
 				EndTurnScreen.GetComponentInChildren<Button> ().onClick.Invoke ();
 			}
 			else if (OwnedScreen.activeInHierarchy){
 				Debug.Log ("Owned");
 				string s = "Bot has paid you money";
+				string b = "Great. Thanks!";
 				OwnedScreen.GetComponentInChildren<Text> ().text = s;
+				OwnedScreen.GetComponentInChildren<Button> ().GetComponentInChildren<Text>().text = b;
 			}
 		}
 	}

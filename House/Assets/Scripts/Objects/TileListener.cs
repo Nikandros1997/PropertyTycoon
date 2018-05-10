@@ -90,7 +90,7 @@ public class TileListener : MonoBehaviour {
 		bids = new List<KeyValuePair<Player, int>> ();
 
 		foreach(Player p in Game.players) {
-			p.LeaveAuction ();
+			//p.LeaveAuction ();
 			if (!p.Equals (Game.players [Game.currentPlayer])) {
 				p.JoinAuction ();
 			}
