@@ -20,9 +20,9 @@ public class Bot : MonoBehaviour
 	private static int NoP_Val;
 	//Val 1 for 1 opponent, 2 for 2 or 3 opponents, 3 for 4+
 	private int PurchaseRank;
-	private int[] PropertyRank = new int[10];
 	private int difficlty;
 	private int CurrentPlayer;
+	private int[] PropertyRank = new int[10];
 	private Toggle[] buy_au_tog;
 
 	private int[] difficulties = { 0, 1, 2 };
@@ -107,6 +107,16 @@ public class Bot : MonoBehaviour
 //				InputField[] inpFields = BidScreen.GetComponentsInChildren<InputField>();
 //				Debug.Log ("InputFields: " + inpFields);
 				//BidScreen.GetComponentInChildren<Button>().onClick.Invoke();
+                //Button b = BidScreen.FindWithTag("botAuWarning").GetComponentInChildren<Button>();
+                Button warnMsgGO = GameObject.Find("AuctionWarningMessage").GetComponentInChildren<Button>();
+                Debug.Log("Msg: "+warnMsgGO.name);
+                if (GameObject.Find("AuctionWarningMessage").activeInHierarchy)
+                    warnMsgGO.GetComponentInChildren<Button>().onClick.Invoke();
+                
+                GameObject bidTxtGO = GameObject.Find("InputField Number");
+                
+                //bidTxtGO.GetComponentInChildren<Text>().text = CalculateBid();
+                //Button biBtn = GameObject.Find("Bid").GetComponentInChildren<Button>();
 			}
 			//Ends Turn
 			else if (EndTurnScreen.activeInHierarchy){
@@ -123,6 +133,17 @@ public class Bot : MonoBehaviour
 			}
 		}
 	}
+    
+    private string CalculateBid(){
+        int pos = Game.players [CurrentPlayer].GetPosition ();
+        int price = Game.board [pos].GetPrice ();
+        string group = Game.board [pos].GetGroup();
+        float min = (float)(price*0.75);
+        float max = (float)(price*1.25);
+        string bid = Random.Range(min, max)+"";
+        Debug.Log("Bid: "+bid);
+        return bid;
+    }
 
 	private void BuyOrAuction(bool buy){
 		int i = buy ? 0 : 1;
@@ -144,7 +165,6 @@ public class Bot : MonoBehaviour
 		int money = Game.players [CurrentPlayer].GetMoney ();
 		int price = Game.board [pos].GetPrice ();
 		PR += GetMoneyRating (money, price);
-
 
 		return PR;
 	}
