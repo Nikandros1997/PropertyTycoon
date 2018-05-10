@@ -215,13 +215,13 @@ public class databaseConnection : MonoBehaviour {
 	}
 
 	//develops property 
-	/*private void developProperty(int tileNo,  int developedAmount, String playerId, int developed){
+	private void developProperty(int tileNo,  int developedAmount, String playerId, int developed){
 		String groupName = getGroup (tileNo);
 		if (countProperty (playerId, tileNo) == -1) {
 			string sqlQuery = String.Format ("UPDATE devAssets set developed = " + developed + " WHERE group_ = \"" + groupName + "\" AND player_Id = \"" + playerId + "\" AND gameNo = " + gameNo + ";");
 			makeChange (sqlQuery);
 		}
-	}*/
+	}
 
 	//get group the tileNo is a member of
 	private String getGroup(int tileNo){
@@ -241,7 +241,7 @@ public class databaseConnection : MonoBehaviour {
 			return "nonProperties";
 		}
 	}
-	/*
+
 	//counts owned properties, changes development if all devAssets of one group are owned by a single player and returns -1,
 	//or gives amount of stations/utlities owned. If none apply, it returns -2.
 	private int countProperty(String playerId, int tileNo){
@@ -254,14 +254,16 @@ public class databaseConnection : MonoBehaviour {
 			string sqlQuery2 = String.Format ("SELECT count(tileNo) FROM (SELECT * from devAssets join DevProperties ON assetNo = tileNo where player_Id = " + playerId + " AND group_ = (Select group_ from DevProperties where tileNo = " + tileNo + ") AND gameNo = " + gameNo + ";");
 			int amountOwned = getDataInt (sqlQuery2);
 			if (groupSize == amountOwned) {
-				if (getDataInt("Select developed FROM devAssets WHERE tileNo = "+tileNo+");" == 0)){
+				if (getDataInt("Select developed FROM devAssets WHERE tileNo = "+tileNo+");") == 0){
 					string sqlQuery3 = String.Format ("UPDATE devAssets set developed = 1 WHERE group_ = \"" + groupName + "\" AND player_Id = \"" + playerId + "\" AND gameNo = " + gameNo + ";");
 					makeChange (sqlQuery3);
 					return -1;
 				}
 			} else {
 				string sqlQuery3 = String.Format ("UPDATE devAssets set developed = 0 WHERE group_ = \"" + groupName + "\" AND player_Id = \"" + playerId + "\" AND gameNo = " + gameNo + ";");
-				return GetDataString (sqlQuery3);
+
+				makeChange (sqlQuery3);
+				return -2;
 			}
 		} else if (tableName == "StationAssets" && playerId != "BANK") {
 			string sqlQuery = String.Format ("SELECT count(tileNo) FROM (SELECT * from  StationAssets join stations ON assetNo = tileNo  where player_Id = " + playerId + " AND gameNo = " + gameNo + ")");
@@ -276,13 +278,13 @@ public class databaseConnection : MonoBehaviour {
 
 	//Returns if a property is owned or not
 	private Boolean isOwned(int tileNo){
-		sqlQuery = String.Format("Select player_id from (SELECT tileNo, group_ from DevProperties UNION SELECT tileNo, group_ from Stations UNION SELECT tileNo,  group_ from Utilities ORDER BY tileNo) Where tileNo = "+tileNo);
+		string sqlQuery = String.Format("Select player_id from (SELECT tileNo, group_ from DevProperties UNION SELECT tileNo, group_ from Stations UNION SELECT tileNo,  group_ from Utilities ORDER BY tileNo) Where tileNo = "+tileNo);
 		if (GetDataString (sqlQuery) != "BANK"){
 			return true;
 		}
 		return false;
 	}
-	*/
+
 
 	//inserts static data into the property tables.
 	private void insertStaticData (){
@@ -307,6 +309,13 @@ public class databaseConnection : MonoBehaviour {
 		makeChange(sqlQueryPropAssets);
 	}
 
+	//restrieves card description from the database
+	private String cardDescription(int cardNo, String cardType){
+		string sqlString = String.Format("SELECT description FROM " +cardType+" WHERE cardNo  = "+ cardNo);
+		return GetDataString(sqlString);
+	}
+
+	//
 
 
 	//	//Needs Finishing

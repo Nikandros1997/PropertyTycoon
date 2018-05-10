@@ -9,17 +9,25 @@ public class TradeManager : MonoBehaviour {
 	public static bool IsTrading = false;
 
 	public static List<Property> currentPlayer;
-	public Text[] currentPlayerText;
+	public Text[] currentPlayerText1;
+	public Text[] currentPlayerText2;
+	public Text[] currentPlayerText3;
 
 	public static List<Property> otherPlayer;
-	public Text[] otherPlayerText;
+	public Text[] otherPlayerText1;
+	public Text[] otherPlayerText2;
+	public Text[] otherPlayerText3;
 
 	public GameObject currentPlayerDisplay;
 	public GameObject otherPlayerDisplay;
 	public GameObject noSamePlayerWarning;
 	public GameObject TradeM;
 
+	public GameObject[] contents;
+
 	public static bool doit = false;
+
+	public int TradeOption = -1;
 
 	// Use this for initialization
 	void Start () {
@@ -29,24 +37,68 @@ public class TradeManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(doit) {
-			foreach(Text t in currentPlayerText) {
-				t.text = "";
-				t.gameObject.SetActive (false);
-			}
+			if (TradeOption == -1) {
+				foreach (Text t in currentPlayerText1) {
+					t.text = "";
+					t.gameObject.SetActive (false);
+				}
 
-			foreach(Text t in otherPlayerText) {
-				t.text = "";
-				t.gameObject.SetActive (false);
-			}
+				foreach (Text t in otherPlayerText1) {
+					t.text = "";
+					t.gameObject.SetActive (false);
+				}
 
-			for(int i = 0; i < currentPlayer.Count; i++) {
-				currentPlayerText [i].text = currentPlayer [i].GetName ();
-				currentPlayerText [i].gameObject.SetActive (true);
-			}
+				for (int i = 0; i < currentPlayer.Count; i++) {
+					currentPlayerText1 [i].text = currentPlayer [i].GetName ();
+					currentPlayerText1 [i].gameObject.SetActive (true);
+				}
 
-			for(int i = 0; i < otherPlayer.Count; i++) {
-				otherPlayerText [i].text = otherPlayer [i].GetName ();
-				otherPlayerText [i].gameObject.SetActive (true);
+				for (int i = 0; i < otherPlayer.Count; i++) {
+					otherPlayerText1 [i].text = otherPlayer [i].GetName ();
+					otherPlayerText1 [i].gameObject.SetActive (true);
+				}
+			} else if (TradeOption == 0) {
+				foreach (Text t in currentPlayerText2) {
+					t.text = "";
+					t.gameObject.SetActive (false);
+				}
+
+				foreach (Text t in otherPlayerText2) {
+					t.text = "";
+					t.gameObject.SetActive (false);
+				}
+
+				for (int i = 0; i < otherPlayer.Count; i++) {
+					currentPlayerText2 [i].text = otherPlayer [i].GetName ();
+					currentPlayerText2 [i].gameObject.SetActive (true);
+				}
+
+				for (int i = 0; i < currentPlayer.Count; i++) {
+					otherPlayerText2 [i].text = currentPlayer [i].GetName ();
+					otherPlayerText2 [i].gameObject.SetActive (true);
+				}
+
+			} else {
+				foreach (Text t in currentPlayerText3) {
+					t.text = "";
+					t.gameObject.SetActive (false);
+				}
+
+				foreach (Text t in otherPlayerText3) {
+					t.text = "";
+					t.gameObject.SetActive (false);
+				}
+
+				for (int i = 0; i < currentPlayer.Count; i++) {
+					currentPlayerText3 [i].text = currentPlayer [i].GetName ();
+					currentPlayerText3 [i].gameObject.SetActive (true);
+				}
+
+				for (int i = 0; i < otherPlayer.Count; i++) {
+					otherPlayerText3 [i].text = otherPlayer [i].GetName ();
+					otherPlayerText3 [i].gameObject.SetActive (true);
+				}
+
 			}
 
 			doit = false;
@@ -67,6 +119,19 @@ public class TradeManager : MonoBehaviour {
 		}
 	}
 
+	public void Offer(int option) {
+
+		TradeOption = option;
+
+		if(option == 0) {
+			Debug.Log ("Counter offer 1");
+		} else if(option == 1) {
+			Debug.Log ("Counter offer 2");
+		}
+
+		doit = true;
+	}
+
 	public void TradeWithPlayer(int number) {
 		PlayerToTrade = number;
 
@@ -76,6 +141,30 @@ public class TradeManager : MonoBehaviour {
 		IsTrading = true;
 
 		BuildingManager.needsUpdate = true;
+	}
+
+	public void AcceptOffer() {
+
+		Player p1 = Game.players [Game.currentPlayer];
+		Player p2 = Game.players [PlayerToTrade];
+
+		List<Property> owned1 = p1.GetProperties ();
+		List<Property> owned2 = p2.GetProperties ();
+
+		foreach(Property p in currentPlayer) {
+			owned1.Remove (p);
+			owned2.Add (p);
+		}
+
+		foreach(Property p in otherPlayer) {
+			owned2.Remove (p);
+			owned1.Add (p);
+		}
+
+		otherPlayerDisplay.SetActive (false);
+
+		BuildingManager.needsUpdate = true;
+		doit = true;
 	}
 
 	public void StopTrade() {
