@@ -16,12 +16,9 @@ public class databaseConnection {
 	public databaseConnection() {
 		connectionString = "URI=file:" + Application.dataPath + "/PropertyTycoon.db";
 
-		//createBoard();
-		//newGame(true); //Needs input args
-		//insertStaticData ();
-		//insertCardData();
-		//createPlayers (1500);
-		//insertStartOwnership ();
+		createBoard();
+		insertStaticData ();
+		insertCardData();
 		GetBoardData ();
 	}
 

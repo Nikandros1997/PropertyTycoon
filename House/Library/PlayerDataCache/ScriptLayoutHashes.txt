@@ -2,7 +2,7 @@ OSXStandalone
 SceneListBegin?
 Assets/Scenes/Main_Scene.unity
 SceneListEnd?
-0b1af8d00e38afaf64ac9d28b92f60e3 Assembly-CSharp.dll:.PropertyDisplay
+837d8fe87a582b72c0211f8571731fb1 Assembly-CSharp.dll:.PropertyDisplay
 9b9c71cf06a525199c2eb4d3be433bc2 Assembly-CSharp.dll:Cinemachine.CinemachineStateDrivenCamera
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
 dbc29a6f2739d277c10da432d73adb6d UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationTrack
@@ -85,7 +85,6 @@ f61c0793411f10cf5fbfa1473fef5ef2 UnityEngine.UI.dll:UnityEngine.UI.ToggleGroup
 ca3ac0b37762af0a2124a1fd6e4bfbed Assembly-CSharp.dll:Cinemachine.CinemachineExternalCamera
 3f9fd1f370bb0c48c8fa3aeda2621925 Assembly-CSharp.dll:.ValidateSetup
 87246723f4d93efe075402f25ebab602 Assembly-CSharp.dll:.FillNames
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.TextManager
 7e2b5a06c8be5b892a9ce3042c54fc36 Assembly-CSharp.dll:.TileGameObject
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
 dbc29a6f2739d277c10da432d73adb6d UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationTrack
@@ -99,7 +98,6 @@ ff05dcdf90651c3d98a9cad3df5e471e UnityEngine.Timeline.dll:UnityEngine.Timeline.C
 31aaf521b3ef8699466676591ea0efd4 UnityEngine.Timeline.dll:UnityEngine.Timeline.GroupTrack
 31aaf521b3ef8699466676591ea0efd4 UnityEngine.Timeline.dll:UnityEngine.Timeline.PlayableTrack
 df374c01140c2d578bf70cbd60073d1d UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.databaseConnection
 fc1e0f4d8439d9928083474691511a13 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
 60b2bb652410a5867a5ab9a01cd38461 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkDiscovery
