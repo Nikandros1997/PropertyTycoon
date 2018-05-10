@@ -6,13 +6,14 @@ using System.Data;
 using System;
 
 
-public class databaseConnection : MonoBehaviour {
+public class databaseConnection {
 	private string connectionString;
 	private int gameNo;
 
 	private Boolean trading;
 	// Use this for initialization
-	void Start () {
+
+	public databaseConnection() {
 		connectionString = "URI=file:" + Application.dataPath + "/PropertyTycoon.db";
 
 		//createBoard();
@@ -22,10 +23,6 @@ public class databaseConnection : MonoBehaviour {
 		//createPlayers (1500);
 		//insertStartOwnership ();
 		GetBoardData ();
-	}
-
-	// Update is called once per frame
-	void Update () {
 	}
 
 	private void GetBoardData(){

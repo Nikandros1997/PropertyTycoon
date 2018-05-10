@@ -23,6 +23,8 @@ public class Game : MonoBehaviour {
 
 	public bool HasStarted = false;
 
+	public static databaseConnection Database = new databaseConnection();
+
 	public static bool rolled = false;
 
 	// board check

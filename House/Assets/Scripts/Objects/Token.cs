@@ -9,7 +9,7 @@ public class Token {
 	public Token (string shape) {
 		position = 0;
 		// change it before submission
-		passedGo = true;
+		passedGo = false;
 		this.shape = shape;
 	}
 

@@ -34,6 +34,7 @@ public class TileListener : MonoBehaviour {
 
 	public List<KeyValuePair<Player,int>> bids;
 
+	// initialize some values.
 	void Start() {
 		auction_buy = auctionORbuy;
 		owned = ownedText;
@@ -43,47 +44,53 @@ public class TileListener : MonoBehaviour {
 		auction2 = auction;
 	}
 
-	public void PropertyListener() {
-
-	}
-
+	/**
+	 * Is the action method that determines the state of a property.
+	 */
 	public static void action(Tile currentT, Player p1) {
 		currentTile = currentT;
 		p = p1;
-
-		//Debug.Log ("The Player: " + p1.GetName() + " is at: " + currentT.GetName());
 
 		if(currentTile.GetProperty() == null) {
 			Debug.Log ("It is a card or tax");
 			endTurn2.SetActive (true);
 
-		}/* else if(p.PassedGo() && currentTile.IsSellable() && p.GetMoney() >= currentTile.GetPrice()) { // ask if the player does not have money for the property is the property going to auction automatically?
-			// show UI where it asks for auction or buy.
-		}*/ else if(currentTile.GetProperty().GetOwner() != null || p.Equals(currentTile.GetProperty().GetOwner())) {
+		} else if(currentTile.GetProperty().GetOwner() != null || p.Equals(currentTile.GetProperty().GetOwner())) {
 			Debug.Log ("It is owned by someone else or yourself.");
 			owned.SetActive (true);
+			//Remove the money from  the player that the property costs
+			//Add the money from  the player that the property costs
+
 			//p.PayRent(currentTile.GetProperty());
 		} else if(currentTile.GetProperty ().GetOwner () == null && p.PassedGo() && currentTile.IsSellable()) {
 			if (p.GetMoney () < currentTile.GetPrice ()) {
 				Debug.Log ("You don't have enough money to buy the property. It will automatically be auctioned.");
+				// Message for player not having enough money to buy the property that landed on.
 				endTurn2.SetActive (true);
 			} else {
 				//Debug.Log ("Buy or not panel");
+				// Ask action for auction or buy.
 				auction_buy.SetActive (true);
 			}
 		} else {
 			Debug.Log ("Not a possible thing to do!!!");
 			endTurn2.SetActive (true);
-			// SUGGESTIONS: maybe have the build here!
+			// SUGGESTIONS: call the build methd.
 		}
 	}
 
+	/**
+	 * Buy a property.
+	 */
 	public void Buy() {
 		//Debug.Log ("Property Bought!!!");
 		p.BuyProperty (currentTile, 0);
 		endTurn2.SetActive (true);
 	}
 
+	/**
+	 * Make all the player join the auction, except from 
+	 */
 	public void PlayersJoinAuction() {
 		Debug.Log ("PlayersJoinAuction("+Game.currentPlayer+")");
 		continuePlayer = Game.currentPlayer;
