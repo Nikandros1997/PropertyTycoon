@@ -16,15 +16,13 @@ public class FillNames : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//if(BuildingManager.needsUpdate) {
-			foreach(Text t in players) {
-				if (t.text.Equals (Game.players [Game.currentPlayer].GetName ())) {
-					t.color = Color.yellow;
-				} else {
-					t.color = Color.black;
-				}
+		foreach(Text t in players) {
+			if (t.text.Equals (Game.players [Game.currentPlayer].GetName ())) {
+				t.color = Color.yellow;
+			} else {
+				t.color = Color.black;
 			}
-		//}
+		}
 	}
 
 	public void addNames() {

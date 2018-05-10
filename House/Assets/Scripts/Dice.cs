@@ -14,7 +14,6 @@ public class Dice {
 
 	public int Roll() {
 
-		doneRolling = false;
 		doubles = false;
 
 		Die[0] = Random.Range(1, 7);

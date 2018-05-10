@@ -14,22 +14,56 @@ public class TradeManager : MonoBehaviour {
 	public static List<Property> otherPlayer;
 	public Text[] otherPlayerText;
 
+	public GameObject currentPlayerDisplay;
+	public GameObject otherPlayerDisplay;
+	public GameObject noSamePlayerWarning;
+	public GameObject TradeM;
+
 	public static bool doit = false;
 
 	// Use this for initialization
 	void Start () {
-		Debug.Log ("TRADEMANAGER");
+		//Debug.Log ("TRADEMANAGER");
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		if(doit) {
-			Debug.Log ("Update the fields!");
+			foreach(Text t in currentPlayerText) {
+				t.text = "";
+				t.gameObject.SetActive (false);
+			}
+
+			foreach(Text t in otherPlayerText) {
+				t.text = "";
+				t.gameObject.SetActive (false);
+			}
+
 			for(int i = 0; i < currentPlayer.Count; i++) {
 				currentPlayerText [i].text = currentPlayer [i].GetName ();
 				currentPlayerText [i].gameObject.SetActive (true);
 			}
+
+			for(int i = 0; i < otherPlayer.Count; i++) {
+				otherPlayerText [i].text = otherPlayer [i].GetName ();
+				otherPlayerText [i].gameObject.SetActive (true);
+			}
+
 			doit = false;
+		}
+	}
+
+	public void Trade(int number) {
+		if(Game.rolled) {
+			if (number != Game.currentPlayer) {
+				TradeWithPlayer (number);
+				otherPlayerDisplay.SetActive(true);
+				TradeM.SetActive (true);
+			} else {
+				//Debug.Log ("You cannot trade with yourself.");
+				noSamePlayerWarning.SetActive(true);
+			}
+			currentPlayerDisplay.SetActive (true);
 		}
 	}
 

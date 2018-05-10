@@ -23,6 +23,8 @@ public class Game : MonoBehaviour {
 
 	public bool HasStarted = false;
 
+	public static bool rolled = false;
+
 	// board check
 	// pot luck
 	// opportunity knock
@@ -50,10 +52,17 @@ public class Game : MonoBehaviour {
 		}
 	}
 
+
+	public void initializeRoll() {
+		rolled = false;
+	}
+
+
 	public void RollDice() {
 
 		int roll = dice.Roll ();
 
+		rolled = true;
 
 		if (dice.IsDoubles ()) {
 			DoublesCounter++;

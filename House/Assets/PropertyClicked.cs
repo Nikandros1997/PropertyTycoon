@@ -36,40 +36,8 @@ public class PropertyClicked : MonoBehaviour, IPointerDownHandler {
 			} else {
 				properties = Game.players [TradeManager.PlayerToTrade].GetProperties ();
 			}
-			bool didit = false;
 
 			int index = 0;
-			/*foreach (Property p in properties) {
-				if (p.GetGroup ().Equals (Parent.name)) {
-					//Debug.Log (Parent.name + "\t" + click);
-					if (index == click) {
-						propertyName = p.GetName ();
-
-						Debug.Log (propertyName + "\t");
-						if (PropertyDisplay.image2.gameObject.activeInHierarchy) {
-							if (!PropertyDisplay.image2.sprite.name.Equals (propertyName)) {
-								
-								//PropertyDisplay.doit (1);
-
-								if (PropertyDisplay.imageOther2.gameObject.activeInHierarchy) {
-									//PropertyDisplay.imageOther2.gameObject.SetActive (false);
-								}
-								didit = true;
-							} else {
-								//PropertyDisplay.doit (3);
-								//PropertyDisplay.image2.gameObject.SetActive (false);
-							}
-						} else if (!PropertyDisplay.image2.gameObject.activeInHierarchy) {
-							didit = true;
-							//PropertyDisplay.doit (1);
-							//PropertyDisplay.image2.gameObject.SetActive (true);
-						}
-					}
-					index++;
-				}
-			}*/
-			//Debug.Log (propertyName + "\t");
-
 
 			foreach (Property p in properties) {
 				if (p.GetGroup ().Equals (Parent.name)) {
@@ -85,71 +53,37 @@ public class PropertyClicked : MonoBehaviour, IPointerDownHandler {
 					index++;
 				}
 			}
-
-			/*if(TradeManager.IsTrading && !PropertyDisplay.image2.gameObject.activeInHierarchy) {
-				properties = Game.players [TradeManager.PlayerToTrade].GetProperties ();
-				index = 0;
-				foreach (Property p in properties) {
-					if (p.GetGroup ().Equals (Parent.name)) {
-						Debug.Log (Parent.name + "\t" + click);
-						if (index == click) {
-							pname = p.GetName ();
-
-							if (PropertyDisplay.imageOther2.gameObject.activeInHierarchy) {
-								if (!PropertyDisplay.imageOther2.sprite.name.Equals (pname)) {
-									//PropertyDisplay.doit (2);
-								} else {
-									PropertyDisplay.imageOther2.gameObject.SetActive (false);
-								}
-							} else if (!PropertyDisplay.imageOther2.gameObject.activeInHierarchy) {
-								//PropertyDisplay.doit (2);
-								PropertyDisplay.imageOther2.gameObject.SetActive (true);
-							}
-						}
-						index++;
-					}
-				}
-			}*/
-
 		} else if(Input.GetMouseButtonDown (1) && TradeManager.IsTrading) {
-			Debug.Log ("RIGHT CLICK");
-
-			int index = 0;
-			foreach (Property p in Game.players[Game.currentPlayer].GetProperties()) {
-				if (p.GetGroup ().Equals (Parent.name)) {
-					Debug.Log ("Current:\t" + p.GetName());
-					if (index == click) {
-						propertyName = p.GetName ();
-
-						TradeManager.currentPlayer.Add (p);
-
-						/*if (PropertyDiplaye.image2.gameObject.activeInHierarchy && PropertyDiplaye.image2.sprite.name.Equals (pname)) {
-							PropertyDiplaye.image2.gameObject.SetActive (false);
-						} else if (!PropertyDiplaye.image2.gameObject.activeInHierarchy) {
-							PropertyDiplaye.image2.gameObject.SetActive (true);
-						}*/
-						TradeManager.doit = true;
-					}
-					index++;
-				}
+			List<Property> properties;
+			if (player == 0) {
+				properties = Game.players [Game.currentPlayer].GetProperties ();
+			} else {
+				properties = Game.players [TradeManager.PlayerToTrade].GetProperties ();
 			}
 
-			index = 0;
-			foreach (Property p in Game.players[TradeManager.PlayerToTrade].GetProperties()) {
+			int index = 0;
+
+			foreach (Property p in properties) {
 				if (p.GetGroup ().Equals (Parent.name)) {
-					Debug.Log ("Other:\t" + p.GetName());
 					if (index == click) {
-						propertyName = p.GetName ();
+						propertyName = p.GetName();
+						//Debug.Log (propertyName);
 
-						TradeManager.otherPlayer.Add (p);
-
-						/*if (PropertyDiplaye.image2.gameObject.activeInHierarchy && PropertyDiplaye.image2.sprite.name.Equals (pname)) {
-							PropertyDiplaye.image2.gameObject.SetActive (false);
-						} else if (!PropertyDiplaye.image2.gameObject.activeInHierarchy) {
-							PropertyDiplaye.image2.gameObject.SetActive (true);
-						}*/
-						//BuildingManager.needsUpdate = true;
+						if (player == 0) {
+							if (!TradeManager.currentPlayer.Contains (p)) {
+								TradeManager.currentPlayer.Add (p);
+							} else {
+								TradeManager.currentPlayer.Remove (p);
+							}
+						} else {
+							if (!TradeManager.otherPlayer.Contains (p)) {
+								TradeManager.otherPlayer.Add (p);
+							} else {
+								TradeManager.otherPlayer.Remove (p);
+							}
+						}
 						TradeManager.doit = true;
+						break;
 					}
 					index++;
 				}

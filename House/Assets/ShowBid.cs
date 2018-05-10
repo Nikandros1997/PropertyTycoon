@@ -9,12 +9,12 @@ public class ShowBid : MonoBehaviour, IPointerDownHandler, IPointerUpHandler // 
 	public InputField bidField;
 
 	public void OnPointerDown (PointerEventData eventData) {
-		Debug.Log ("Clicked.");
+		//Debug.Log ("Clicked.");
 		bidField.gameObject.SetActive (true);
 	}
 
 	public void OnPointerUp (PointerEventData eventData) {
-		Debug.Log ("Unclicked.");
+		//Debug.Log ("Unclicked.");
 		bidField.gameObject.SetActive (false);
 	}
 }
