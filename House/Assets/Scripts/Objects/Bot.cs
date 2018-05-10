@@ -36,14 +36,6 @@ public class Bot : MonoBehaviour
 	void Update ()
 	{
 		CurrentPlayer = Game.currentPlayer;
-
-		/*
-            Token Select:   Done
-            Roll Dice:      Done
-            Buy:            Processing
-            Auction:        -
-        */
-
 		// Token Select
 		if (TokenScreen.activeInHierarchy && AssignTokens.isBot) {
 			Debug.Log ("Token");
@@ -59,12 +51,11 @@ public class Bot : MonoBehaviour
 			}
 
 			Debug.Log ("Dif: " + difficlty + " token: " + n);
-		}
-
+   		}
+		//Check if player value is valid and player is a bot.
 		if (checkPlayer (CurrentPlayer) && Game.players [CurrentPlayer].IsBot ()) {
 			//Roll Dice
 			if (RollScreen.activeInHierarchy) {
-				Debug.Log ("Roll");
 				//Debug.Log("rollScreen active");
 				//Button newBut = rollScreen.GetComponent<Button>();   //WORKS
 				Debug.Log ("Bot auto roll");
@@ -110,16 +101,19 @@ public class Bot : MonoBehaviour
 					}
 				}
 			}
+			//Buys or Auctions
 			else if (BidScreen.activeInHierarchy) {
 //				Debug.Log ("Bid"+CurrentPlayer);
 //				InputField[] inpFields = BidScreen.GetComponentsInChildren<InputField>();
 //				Debug.Log ("InputFields: " + inpFields);
-				BidScreen.GetComponentInChildren<Button>().onClick.Invoke();
+				//BidScreen.GetComponentInChildren<Button>().onClick.Invoke();
 			}
+			//Ends Turn
 			else if (EndTurnScreen.activeInHierarchy){
 				Debug.Log ("EndTurn "+CurrentPlayer);
 				EndTurnScreen.GetComponentInChildren<Button> ().onClick.Invoke ();
 			}
+			//Changes output when bot lands on owned tile.
 			else if (OwnedScreen.activeInHierarchy){
 				Debug.Log ("Owned");
 				string s = "Bot has paid you money";
