@@ -20,11 +20,10 @@ public class ValidateSetup : MonoBehaviour {
 
 	public static string[] names = new string[6];
 	public static bool[] bot = new bool[6];
-    
-    //Put public for bot
-    //Removed in comarison
-    //public static int player;
 
+	/**
+	 * Validate all the fields on the setup game page.
+	 */
 	public bool validateStart() {
 		//Debug.Log ("validateStart()");
 
@@ -76,6 +75,9 @@ public class ValidateSetup : MonoBehaviour {
 		return false;
 	}
 
+	/**
+	 * Show next page after setup.
+	 */
 	public void startGame () {
 		//Debug.Log ("startGame()");
 
@@ -85,6 +87,9 @@ public class ValidateSetup : MonoBehaviour {
 		}
 	}
 
+	/**
+	 * Add name when bot is added and doesn't contain name.
+	 */
 	public void addBotName(InputField field) {
 		//Debug.Log ("addBotName()");
 

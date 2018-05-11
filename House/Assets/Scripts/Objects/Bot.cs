@@ -28,16 +28,21 @@ public class Bot : MonoBehaviour
 
 	private int[] difficulties = { 0, 1, 2 };
 
+	// Initialization
 	void Start ()
 	{
 		Debug.Log ("BOT started");
 		PurchaseRank = -1;
 	}
 
+	// Called once per frame
 	void Update ()
 	{
 		CurrentPlayer = Game.currentPlayer;
-		// Token Select
+		/** Token Select
+		*	If the selection window is open and the
+		*	assigning player is a bot auto select token
+		**/
 		if (TokenScreen.activeInHierarchy && AssignTokens.isBot()) {
 			Debug.Log ("Token");
 
@@ -53,17 +58,22 @@ public class Bot : MonoBehaviour
 
 			Debug.Log ("Dif: " + difficlty + " token: " + n);
    		}
-		//Check if player value is valid and player is a bot.
+		/** Check if player value is valid and player is a bot.
+		**/
 		if (checkPlayer (CurrentPlayer) && Game.players [CurrentPlayer].isBot ()) {
-			//Roll Dice
+			
+			/** RollDice
+			*	Auto click roll button
+			**/
 			if (RollScreen.activeInHierarchy) {
-				//Debug.Log("rollScreen active");
-				//Button newBut = rollScreen.GetComponent<Button>();   //WORKS
 				Debug.Log ("Bot auto roll");
 				NumOfPlayers = AssignTokens.numberOfPlayers;
 				RollScreen.GetComponentInChildren<Button> ().onClick.Invoke ();
 			}
-            //Buy Property
+            
+			/** Buy/Auction
+			*	Ranks property and buys or auctions
+			**/
             else if (BuyScreen.activeInHierarchy) {
 				//Debug.Log ("Boo");
 				Debug.Log ("Buy/Auction");
@@ -76,18 +86,13 @@ public class Bot : MonoBehaviour
 				PurchaseRank = GetFinalRank (pos, group); // 1 - 20
 
 				if (PurchaseRank >= 0) {
-					//Debug.Log ("Group: " + group + " Rank: " + PurchaseRank);
-
 					double number = Random.Range (0, 100);
 					double PR_Perc = ((double)PurchaseRank / 20) * 100;
 
 					buy_au_tog = BuyScreen.GetComponentsInChildren<Toggle> ();
 
-					//Debug.Log (buyTog.name + " and " + auTog.name+" found");
 					Debug.Log ("PurchaseRank: "+PurchaseRank+" Number: " + number +" Percentage: "+PR_Perc);
 
-                    //force default
-                    difficlty = 4;
 					switch (difficlty) {
 					case 0: //easy
 						BuyOrAuction (number < PR_Perc - 40);
@@ -104,10 +109,12 @@ public class Bot : MonoBehaviour
 					}
 				}
 			}
-			//Buys or Auctions
+			/** BIDDING
+			*	Decides whether to up bid my 1, 5, or 10
+			*	or withdraw
+			**/
 			else if (BidScreen.activeInHierarchy) {
                 GameObject warnGO = GameObject.FindWithTag("botAuWarning");
-                //GUIText ThisText = GameObject.FindWithTag("asdf").GetComponent<GUIText>() as GUIText;
                 if(warnGO!=null){
                     Debug.Log("Msg: "+warnGO);
                     if (warnGO.activeInHierarchy){
@@ -115,16 +122,8 @@ public class Bot : MonoBehaviour
                         Button warnBut = warnGO.GetComponentInChildren<Button>() as Button;
                         warnBut.onClick.Invoke();
                     }
-                    //aFinger = transform.Find("LeftShoulder/Arm/Hand/Finger");
-                    //GameObject temp_go = GameObject.Find("Canvas/Bid/1");
                     
                     Button butAddBid = GameObject.Find("Canvas/Bid/Withdraw").GetComponent<Button>();
-                    /*
-                    Button but1 = GameObject.Find("Canvas/Bid/1").GetComponent<Button>();
-                    Button but5 = GameObject.Find("Canvas/Bid/5").GetComponent<Button>();
-                    Button but10 = GameObject.Find("Canvas/Bid/10").GetComponent<Button>();
-                    */
-                    //Debug.Log("1: "+but1+" 5: "+but5+" 10: "+but10);
                     
                     
                     Button butBid = GameObject.Find("Canvas/Bid/Bid").GetComponent<Button>();
@@ -165,7 +164,9 @@ public class Bot : MonoBehaviour
 			}
 		}
 	}
-    
+    /**
+	*	Calculates how much to bid
+	**/
     private string CalculateBid(){
         int pos = Game.players [CurrentPlayer].GetPosition ();
         int price = Game.board [pos].GetPrice ();
@@ -177,16 +178,26 @@ public class Bot : MonoBehaviour
         return bid;
     }
 
+    /**
+	*	Buy or auction descision
+	**/
 	private void BuyOrAuction(bool buy){
 		int i = buy ? 0 : 1;
 		buy_au_tog [i].isOn = !buy_au_tog [i].isOn;
 		//Toggle (buy_au_tog [i].isOn);
 	}
 
+    /**
+	*	Flips bool value
+	**/
 	private bool Toggle(bool b){
 		return !b;
 	}
 
+    /**
+	*	Gets the final rank of a property
+	*	deciding to be bought
+	**/
 	private int GetFinalRank (int pos, string group)
 	{
 		int PR = 0;
@@ -201,6 +212,9 @@ public class Bot : MonoBehaviour
 		return PR;
 	}
 
+    /**
+	*	Calculates rating of current holdings
+	**/
 	private int GetMoneyRating (int money, int price)
 	{
 		double perc = (price / money) * 100;
@@ -220,6 +234,9 @@ public class Bot : MonoBehaviour
 		return v;
 	}
 
+    /**
+	*	Checks if player is within scope
+	**/
 	private bool checkPlayer (int i)
 	{
 		if (i >= 0 && i < 6) {
@@ -228,6 +245,10 @@ public class Bot : MonoBehaviour
 		return false;
 	}
 
+    /**
+	*	Returns rankings of property sets
+	*	based on game time and bot difficulty
+	**/
 	private int[] createPropertyRank ()
 	{
 		if (EarlyGame) {
@@ -255,6 +276,9 @@ public class Bot : MonoBehaviour
 		}
 	}
 
+    /**
+	*	Returns rank of property set
+	**/
 	private int GetPropertyRank (string group)
 	{
 		switch (group) {
@@ -283,6 +307,12 @@ public class Bot : MonoBehaviour
 		}
 	}
 
+    /**
+	*	Returns bot difficulty
+	*		1. Easy
+	*		2. Medium
+	*		3. Hard
+	**/
 	private int GetDifficulty ()
 	{
 		Debug.Log ("Difficulty Length" + Difficulty.Length);

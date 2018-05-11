@@ -14,6 +14,8 @@ public class AssignTokens : MonoBehaviour {
 	public static int numberOfPlayers;
 
 	private int index = 0;
+
+	// the names of all the tokens.
     
     //Used for bot
     private static bool bot;
@@ -21,9 +23,13 @@ public class AssignTokens : MonoBehaviour {
 	private string[] tokens = {"Boot", "Phone", "Goblet", "Spoon", "Cat", "Hatstand"};
 
 	void Start() {
+		
         bot = false;
 	}
 
+	/**
+	 * Sets the header token chooser.
+	 */
 	public void setHeader() {
 		if(index < 6) {
 			header.text = ValidateSetup.names[index] + " Choose Token:";
@@ -37,6 +43,10 @@ public class AssignTokens : MonoBehaviour {
         return bot;
     }
     
+	/**
+	 * Assign token chosen on the token chooser.
+	 */
+
 	public void chooseToken() {
 		//Debug.Log ("chooseToken()");
 

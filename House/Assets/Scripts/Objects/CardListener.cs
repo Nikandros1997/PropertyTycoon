@@ -5,6 +5,9 @@ public interface CardListenerInt {
 	void CardReceived(Player p);
 }
 
+/**
+ * These are the listeners implemented for the cards.
+ */
 public class CardListener {
 	private List<CardListenerInt> _listeners = new List<CardListenerInt>();
 

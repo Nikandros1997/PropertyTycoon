@@ -1,5 +1,9 @@
 ﻿using System;
 
+/**
+ * This is the base class for all the cards of the game.
+ */
+
 public class Card {
 
 	private string name;
@@ -12,6 +16,9 @@ public class Card {
 		return name;
 	}
 
+	/**
+	 * This is going to be a listener which waits for the player to access it and have the effects on him.
+	 */
 	public void UseCard(Player p) {
 
 	}

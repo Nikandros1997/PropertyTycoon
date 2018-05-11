@@ -16,15 +16,17 @@ public class FillNames : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        foreach(Text t in players) {
-            if (t.text.Equals (Game.players [Game.currentPlayer].GetName ())) {
-                t.color = Color.yellow;
-            } else {
-                t.color = Color.black;
-            }
-        }
+		foreach(Text t in players) {
+			if (t.text.Equals (Game.players [Game.currentPlayer].GetName ())) {
+				t.color = Color.yellow;
+			} else {
+				t.color = Color.black;
+			}
+		}
 	}
-
+	/**
+	 * Add all the names of the players in a list.
+	 */
 	public void addNames() {
 		//Debug.Log ("addNames()");
 		for (int i = 0; i < AssignTokens.numberOfPlayers; i++) {

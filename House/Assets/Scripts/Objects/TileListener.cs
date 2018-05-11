@@ -34,6 +34,7 @@ public class TileListener : MonoBehaviour {
 
 	public List<KeyValuePair<Player,int>> bids;
 
+	// initialize some values.
 	void Start() {
 		auction_buy = auctionORbuy;
 		owned = ownedText;
@@ -43,66 +44,69 @@ public class TileListener : MonoBehaviour {
 		auction2 = auction;
 	}
 
-	public void PropertyListener() {
-
-	}
-
+	/**
+	 * Is the action method that determines the state of a property.
+	 */
 	public static void action(Tile currentT, Player p1) {
 		currentTile = currentT;
 		p = p1;
-
-		//Debug.Log ("The Player: " + p1.GetName() + " is at: " + currentT.GetName());
 
 		if(currentTile.GetProperty() == null) {
 			Debug.Log ("It is a card or tax");
 			endTurn2.SetActive (true);
 
-		}/* else if(p.PassedGo() && currentTile.IsSellable() && p.GetMoney() >= currentTile.GetPrice()) { // ask if the player does not have money for the property is the property going to auction automatically?
-			// show UI where it asks for auction or buy.
-		}*/ else if(currentTile.GetProperty().GetOwner() != null || p.Equals(currentTile.GetProperty().GetOwner())) {
+		} else if(currentTile.GetProperty().GetOwner() != null || p.Equals(currentTile.GetProperty().GetOwner())) {
 			Debug.Log ("It is owned by someone else or yourself.");
 			owned.SetActive (true);
+			//Remove the money from  the player that the property costs
+			//Add the money from  the player that the property costs
+
 			//p.PayRent(currentTile.GetProperty());
 		} else if(currentTile.GetProperty ().GetOwner () == null && p.PassedGo() && currentTile.IsSellable()) {
 			if (p.GetMoney () < currentTile.GetPrice ()) {
 				Debug.Log ("You don't have enough money to buy the property. It will automatically be auctioned.");
+				// Message for player not having enough money to buy the property that landed on.
 				endTurn2.SetActive (true);
 			} else {
 				//Debug.Log ("Buy or not panel");
+				// Ask action for auction or buy.
 				auction_buy.SetActive (true);
 			}
 		} else {
 			Debug.Log ("Not a possible thing to do!!!");
 			endTurn2.SetActive (true);
-			// SUGGESTIONS: maybe have the build here!
+			// SUGGESTIONS: call the build methd.
 		}
 	}
 
+	/**
+	 * Buy a property.
+	 */
 	public void Buy() {
 		//Debug.Log ("Property Bought!!!");
 		p.BuyProperty (currentTile, 0);
 		endTurn2.SetActive (true);
 	}
 
+	/**
+	 * Make all the player join the auction, except from 
+	 */
 	public void PlayersJoinAuction() {
 		Debug.Log ("PlayersJoinAuction("+Game.currentPlayer+")");
 		continuePlayer = Game.currentPlayer;
 		bids = new List<KeyValuePair<Player, int>> ();
-        int numPlayers = 0;
 
 		foreach(Player p in Game.players) {
-            Debug.Log("What The Fuck");
-			p.JoinAuction ();
-            numPlayers++;
-			/*if (!p.Equals (Game.players [Game.currentPlayer])) {
+			p.LeaveAuction ();
+			if (!p.Equals (Game.players [Game.currentPlayer])) {
 				p.JoinAuction ();
-			}*/
+			}
 		}
 
-		//Game.nextPlayer2 ();
+		Game.nextPlayer2 ();
 
 		if (MinimumPlayersForAuction (Game.players)) {
-			Debug.Log ("MinimumPlayersForAuction"+ (numPlayers));
+			Debug.Log ("MinimumPlayersForAuction (Game.players)");
 			auction2.SetActive (true);
 		} else {
 			// say that there are not enough players to auction properties.
@@ -110,19 +114,20 @@ public class TileListener : MonoBehaviour {
 		}
 	}
 
+	/**
+	 * Update fields.
+	 */
 	public void UpdateInputFieldPassword() {
 		bidInteger2.text = bidPassword2.text;
 	}
 
+	/**
+	 * The player bids money to the auction.
+	 */
 	public void Bid() {
 		if(bidInteger2.text.Equals("")) {
 			return;
 		}
-
-		//players = Game.players;
-		//Tile tile = Game.board[players [Game.currentPlayer].GetPosition ()];
-
-
 		int bid = Int32.Parse(bidInteger2.text);
 
 		if (HasTheMoney (Game.players [Game.currentPlayer], bid)) {
@@ -144,32 +149,23 @@ public class TileListener : MonoBehaviour {
 				+ "bid. Check if you can bid something "
 				+ "smaller. Otherwise, withdraw.");
 		}
-
-
-		/*if(highestBidder != -1 && highestBid > 0) {
-			Debug.Log ("Hey, "
-				+ players[highestBidder].GetName() + "! You are "
-				+ "the highest bidder. You just bought "
-				+ tile.GetName());
-				Game.currentPlayer = continuePlayer;
-			players[highestBidder].BuyProperty(tile);
-		} else {
-			// when there are 2 bidders and the first bidder leaves the auction, the second bidder doesn't have the opportunity to do its bid.
-			// first bidder bids 0
-			// second bidder doesn't have the opportunity to bid.
-			Debug.Log ("None bought this area. It is owned by the bank.");
-		}
-		endTurn2.SetActive (true);*/
 	}
 
+	/**
+	 * Checks if the player passes has money.
+	 * 
+	 * @p, Player, a player from the game.
+	 * @bidOrigin, int, 
+	 */
 	private bool HasTheMoney(Player p, int bidOrigin) {
-		if(BidSum(bidOrigin) <= p.GetMoney()) {
-			return true;
-		}
-
-		return false;
+		return BidSum(bidOrigin) <= p.GetMoney();
 	}
 
+	/**
+	 * Calculates the sum of all the bids that are owned by the player who bids right now.
+	 * 
+	 * @bidOrigin, int, the current bid of the player.
+	 */
 	private int BidSum(int bidOrigin) {
 		int bid = 0;
 
@@ -180,8 +176,10 @@ public class TileListener : MonoBehaviour {
 		return (bid + bidOrigin);
 	}
 
+	/**
+	 * Remove a player from the auction.
+	 */
 	public void LeaveAuction() {
-        Debug.Log("Hlp");
 		Debug.Log (Game.currentPlayer);
 		Debug.Log("Hey,"
 			+ Game.players[Game.currentPlayer].GetName() + "! You "
@@ -213,6 +211,11 @@ public class TileListener : MonoBehaviour {
 		} 
 	}
 
+	/**
+	 * Returns true if there at least two players in the auction, false otherwise.
+	 * 
+	 * @players, List<Player>, the list of all the players that play the game.
+	 */
     public static bool MinimumPlayersForAuction(List<Player> players) {
         int counter = 0;
 
@@ -223,14 +226,8 @@ public class TileListener : MonoBehaviour {
 			}
 		}
 		Debug.Log ("Counter: " + counter);
-		if(counter > 1) {
-			return true;
-		}
-
-		return false;
+		return counter > 1;
     }
-
-
 }
 
 
