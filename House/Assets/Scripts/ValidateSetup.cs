@@ -22,12 +22,13 @@ public class ValidateSetup : MonoBehaviour {
 	public static bool[] bot = new bool[6];
     
     //Put public for bot
-    public static int player;
+    //Removed in comarison
+    //public static int player;
 
 	public bool validateStart() {
 		//Debug.Log ("validateStart()");
 
-		player = 0;
+		int player = 0;
 
 		// Get the names from fields and save then in an array.
 		for(int i = 0; i < fields.Length; i++) {

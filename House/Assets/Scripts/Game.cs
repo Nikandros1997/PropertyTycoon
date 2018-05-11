@@ -18,11 +18,14 @@ public class Game : MonoBehaviour {
 	public static Dice dice = new Dice();
 
 	private int DoublesCounter = 0;
-    public static int TurnCounter = -1;
+    //Used for bot
+    private static int TurnCounter = -1;
 
 	public GameObject Buy_Auction;
 
 	public bool HasStarted = false;
+    
+    public static bool rolled = false;
 
 	// board check
 	// pot luck
@@ -51,10 +54,22 @@ public class Game : MonoBehaviour {
 			Buy_Auction_Property.text = players [currentPlayer].GetName ();
 		}
 	}
+    
+    
+    public void initializeRoll() {
+		rolled = false;
+	}
+    
+    public static int getTurn(){
+        return TurnCounter;
+    }
 
 	public void RollDice() {
 
 		int roll = dice.Roll ();
+        
+        rolled = true;
+        
         TurnCounter++;
 
 		if (dice.IsDoubles ()) {

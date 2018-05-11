@@ -44,6 +44,7 @@ public class Player
 	}
 
 	public void LeaveAuction() {
+        Debug.Log("Player made not au from in player");
 		auctionIt = false;
 	}
 
@@ -104,7 +105,7 @@ public class Player
 		return name;
 	}
 
-	public bool IsBot() {
+	public bool isBot() {
 		return bot;
 	}
 

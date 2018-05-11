@@ -88,24 +88,25 @@ public class TileListener : MonoBehaviour {
 		Debug.Log ("PlayersJoinAuction("+Game.currentPlayer+")");
 		continuePlayer = Game.currentPlayer;
 		bids = new List<KeyValuePair<Player, int>> ();
+        int numPlayers = 0;
 
 		foreach(Player p in Game.players) {
-			p.LeaveAuction ();
-			if (!p.Equals (Game.players [Game.currentPlayer])) {
+            Debug.Log("What The Fuck");
+			p.JoinAuction ();
+            numPlayers++;
+			/*if (!p.Equals (Game.players [Game.currentPlayer])) {
 				p.JoinAuction ();
-			}
+			}*/
 		}
 
-		Game.nextPlayer2 ();
+		//Game.nextPlayer2 ();
 
 		if (MinimumPlayersForAuction (Game.players)) {
-			Debug.Log ("MinimumPlayersForAuction (Game.players)");
+			Debug.Log ("MinimumPlayersForAuction"+ (numPlayers));
 			auction2.SetActive (true);
 		} else {
 			// say that there are not enough players to auction properties.
 			Debug.Log ("there are not enough players to auction properties.");
-			auction2.SetActive (false);
-			endTurn2.SetActive (true);
 		}
 	}
 
@@ -180,6 +181,7 @@ public class TileListener : MonoBehaviour {
 	}
 
 	public void LeaveAuction() {
+        Debug.Log("Hlp");
 		Debug.Log (Game.currentPlayer);
 		Debug.Log("Hey,"
 			+ Game.players[Game.currentPlayer].GetName() + "! You "

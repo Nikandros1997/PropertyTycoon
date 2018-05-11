@@ -12,6 +12,7 @@ public class Bot : MonoBehaviour
 	public GameObject EndTurnScreen;
 	public GameObject OwnedScreen;
 	public GameObject RollButton;
+    public GameObject BidWarningMsg;
 	public Toggle[] Token;
 	public Toggle[] Difficulty;
 
@@ -37,7 +38,7 @@ public class Bot : MonoBehaviour
 	{
 		CurrentPlayer = Game.currentPlayer;
 		// Token Select
-		if (TokenScreen.activeInHierarchy && AssignTokens.isBot) {
+		if (TokenScreen.activeInHierarchy && AssignTokens.isBot()) {
 			Debug.Log ("Token");
 
 			difficlty = GetDifficulty ();
@@ -53,7 +54,7 @@ public class Bot : MonoBehaviour
 			Debug.Log ("Dif: " + difficlty + " token: " + n);
    		}
 		//Check if player value is valid and player is a bot.
-		if (checkPlayer (CurrentPlayer) && Game.players [CurrentPlayer].IsBot ()) {
+		if (checkPlayer (CurrentPlayer) && Game.players [CurrentPlayer].isBot ()) {
 			//Roll Dice
 			if (RollScreen.activeInHierarchy) {
 				//Debug.Log("rollScreen active");
@@ -66,7 +67,7 @@ public class Bot : MonoBehaviour
             else if (BuyScreen.activeInHierarchy) {
 				//Debug.Log ("Boo");
 				Debug.Log ("Buy/Auction");
-				EarlyGame = (Game.TurnCounter < NumOfPlayers*7);
+				EarlyGame = (Game.getTurn() < NumOfPlayers*7);
 				PropertyRank = createPropertyRank ();
 
 				int pos = Game.players [CurrentPlayer].GetPosition ();
@@ -85,6 +86,8 @@ public class Bot : MonoBehaviour
 					//Debug.Log (buyTog.name + " and " + auTog.name+" found");
 					Debug.Log ("PurchaseRank: "+PurchaseRank+" Number: " + number +" Percentage: "+PR_Perc);
 
+                    //force default
+                    difficlty = 4;
 					switch (difficlty) {
 					case 0: //easy
 						BuyOrAuction (number < PR_Perc - 40);
@@ -96,27 +99,56 @@ public class Bot : MonoBehaviour
 						BuyOrAuction (number < PR_Perc);
 						break;
 					default:
-						Debug.Log ("No difficlty found");
+						BuyOrAuction(false);
 						break;
 					}
 				}
 			}
 			//Buys or Auctions
 			else if (BidScreen.activeInHierarchy) {
-//				Debug.Log ("Bid"+CurrentPlayer);
-//				InputField[] inpFields = BidScreen.GetComponentsInChildren<InputField>();
-//				Debug.Log ("InputFields: " + inpFields);
-				//BidScreen.GetComponentInChildren<Button>().onClick.Invoke();
-                //Button b = BidScreen.FindWithTag("botAuWarning").GetComponentInChildren<Button>();
-                Button warnMsgGO = GameObject.Find("AuctionWarningMessage").GetComponentInChildren<Button>();
-                Debug.Log("Msg: "+warnMsgGO.name);
-                if (GameObject.Find("AuctionWarningMessage").activeInHierarchy)
-                    warnMsgGO.GetComponentInChildren<Button>().onClick.Invoke();
-                
-                GameObject bidTxtGO = GameObject.Find("InputField Number");
-                
-                //bidTxtGO.GetComponentInChildren<Text>().text = CalculateBid();
-                //Button biBtn = GameObject.Find("Bid").GetComponentInChildren<Button>();
+                GameObject warnGO = GameObject.FindWithTag("botAuWarning");
+                //GUIText ThisText = GameObject.FindWithTag("asdf").GetComponent<GUIText>() as GUIText;
+                if(warnGO!=null){
+                    Debug.Log("Msg: "+warnGO);
+                    if (warnGO.activeInHierarchy){
+                        Debug.Log("WarningScreen: "+Game.currentPlayer);
+                        Button warnBut = warnGO.GetComponentInChildren<Button>() as Button;
+                        warnBut.onClick.Invoke();
+                    }
+                    //aFinger = transform.Find("LeftShoulder/Arm/Hand/Finger");
+                    //GameObject temp_go = GameObject.Find("Canvas/Bid/1");
+                    
+                    Button butAddBid = GameObject.Find("Canvas/Bid/Withdraw").GetComponent<Button>();
+                    /*
+                    Button but1 = GameObject.Find("Canvas/Bid/1").GetComponent<Button>();
+                    Button but5 = GameObject.Find("Canvas/Bid/5").GetComponent<Button>();
+                    Button but10 = GameObject.Find("Canvas/Bid/10").GetComponent<Button>();
+                    */
+                    //Debug.Log("1: "+but1+" 5: "+but5+" 10: "+but10);
+                    
+                    
+                    Button butBid = GameObject.Find("Canvas/Bid/Bid").GetComponent<Button>();
+                    Button butWithdraw = GameObject.Find("Canvas/Bid/Withdraw").GetComponent<Button>();
+                    
+                    switch(Random.Range(0,3)){
+                        case 0:
+                            butAddBid = GameObject.Find("Canvas/Bid/1").GetComponent<Button>();
+                            break;
+                        case 1:
+                            butAddBid = GameObject.Find("Canvas/Bid/5").GetComponent<Button>();
+                            break;
+                        case 2:
+                            butAddBid = GameObject.Find("Canvas/Bid/10").GetComponent<Button>();
+                            break;
+                        default:
+                            butWithdraw.onClick.Invoke();
+                            break;
+                    }
+                    
+                    Debug.Log(butBid + "" + butWithdraw + "" + butAddBid);
+                    butAddBid.onClick.Invoke();
+                    butBid.onClick.Invoke();
+                }
 			}
 			//Ends Turn
 			else if (EndTurnScreen.activeInHierarchy){

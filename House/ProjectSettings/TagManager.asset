@@ -7,10 +7,6 @@ TagManager:
   - PlayerName
   - AI_Toggle
   - buyauction
-  - botDiceRoll
-  - botBuy
-  - botAuct
-  - botAuWarning
   layers:
   - Default
   - TransparentFX

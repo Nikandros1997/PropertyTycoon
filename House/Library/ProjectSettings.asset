@@ -631,16 +631,12 @@ PlayerSettings:
       daydreamIconForeground: {fileID: 0}
       daydreamIconBackground: {fileID: 0}
   cloudServicesEnabled:
-    Build: 0
-    Collab: 0
-    ErrorHub: 0
-    Hub: 0
-    UNet: 0
+    UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: 1022f66a-488d-49b4-a950-9981dd4849bc
+  cloudProjectId: 5f8518c3-2468-4afd-8c1e-a7309e4aec2c
   projectName: House
-  organizationId: cam-lyall96
+  organizationId: nikandros
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
